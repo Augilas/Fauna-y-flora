@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Flora o Fauna</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="flex">
+        <!-- Barra de Navegación -->
+        <div class="bg-[#66245B] flex flex-col md:min-h-screen w-screen md:w-1/6 fixed z-10">
+            <div class="flex flex-col items-center lg:flex-row lg:items-center lg:ml-6 lg:mb-16 md:mb-8">
+                <img src="img/LogoUtp.png" alt="LOGO UTP" class="size-20 mr-2 mt-6 mb-2">
+                <h1 class="text-4xl text-white mt-6 font-semibold hidden md:block">UTP</h1>
+            </div>
+
+            <div class="flex lg:flex-col md:flex-row">
+                <nav class="flex lg:flex-col md:flex-row md:ml-8 ml-6 md:space-x-0 space-x-2"">
+                    <a href="Home.html" class="text-white text-2xl mb-2 md:mb-6 flex items-center">
+                        <i class="fas fa-home mr-2 md:mr-4 md:ml-0 ml-28"></i>
+                        <span class="hidden md:inline">Inicio</span>
+                    </a>
+                    
+                    <a href="RegistrarFloraFauna.html" class="publish-btn text-white text-2xl mb-2 md:mb-6 flex items-center">
+                        <i class="fas fa-plus-circle mr-2 md:mr-4"></i>
+                        <span class="hidden md:inline">Publicar</span>
+                    </a>
+                    
+                    <a href="#" class="text-white text-2xl mb-2 md:mb-56 flex items-center">
+                        <i class="fas fa-user mr-2 md:mr-4"></i>
+                        <span class="hidden md:inline">Perfil</span>
+                    </a>                    
+                    
+                    <ul class="flex flex-row items-center">
+                        <li
+                            class="text-2xl cursor-pointer items-center justify-center relative group z-2 text-white mr-2 mb-3">
+                            <i class="fas fa-bars"></i>
+                            <ul class="hidden absolute bg-gray-700 py-2 px-4 space-y-2 text-white group-hover:block">
+                                <li class=""><a class="style-a text-white hover:bg-black text-2xl"
+                                        href="Ayuda.html">Ayuda</a>
+                                </li>
+                                <li class=""><a class="style-a text-white hover:bg-black text-2xl" href="">Salir</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="text-white mb-3 text-2xl hidden md:inline">Mas</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Formulario para Registrar -->
+        <div class="bg-[#EAEAEA] lg:w-full md:w-1/2 md:mt-0 mt-20">
+            <br><br><br><br>
+            <section class="lg:ml-96">
+                <div class="mt-16 lg:ml-44 md:ml-28 shadow-lg p-0.5 bg-white md:w-1/2">
+                    <div class="mt-14 mb-10 justify-center">
+                        <h1 class="ml-4 md:ml-24  text-4xl font-bold mb-6">Registrar flora o fauna</h1>
+                    </div>
+
+                    <div class="mt-12 mb-8 items-center justify-center ">
+                        <form action="">
+                            <div class="mb-8">
+                                <label for="nombre" class="text-lg font-semibold md:ml-12 ">Nombre común:</label>
+                                <input type="text"
+                                    class="ml-14 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5"
+                                    id="nombre" name="nombre" required>
+                            </div>
+
+                            <div class="mb-14">
+                                <label for="imagen" class="text-lg font-semibold md:ml-12">Cargar Imagen:</label>
+                                <input type="file"
+                                    class="ml-16 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5 "
+                                    id="imagen" name="imagen" accept="image/*">
+                            </div>
+
+                            <div class="md:ml-60">
+                                <button type="submit"
+                                    class="text-white bg-[#66245B] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-5 py-2.5">Publicar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <br><br><br><br><br><br><br>
+            
+        </div>
+    </div>
+
+    <!--footer-->
+    <footer class="bg-[#444444] text-white text-sm py-8 z-20 relative">
+        <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 place-items-center">
+            <!--Logo-->
+            <div class="col-start-2 col-end-2 col-span-3 md:col-span-2 lg:col-span-3">
+                <img src="img/LogoUtp.png" alt="LOGO UTP" class="size-24 mb-6">
+            </div>
+            <!--Contact-->
+            <div class="col-start-2 col-end-2 col-span-3 text-center mb-6 md:col-span-2  lg:col-span-3">
+                <strong>Contacto</strong><br>
+                Avenida Universidad Tecnológica de Panamá, Vía Puente Centenario, Campus Metropolitano Dr.
+                Victor
+                Levi
+                Sasso, Edificio No. 3, tercer piso. <br>
+                Teléfono: (507)560-3650 <br>
+            </div>
+            <!--Social-->
+            <div class="col-start-2 col-end-2 col-span-3 md:col-span-2 place-items-center  lg:col-span-3">
+                <a href="https://twitter.com/utpfisc?lang=es" class="fab fa-x-twitter fa-lg text-white text-2xl"></a>
+                <a href="https://pa.linkedin.com/company/utpfisc?trk=public_post_follow-view-profile"
+                    class="fab fa-linkedin fa-lg text-white text-2xl"></a>
+                <a href="https://www.youtube.com/@utpfisc2203" class="fab fa-youtube fa-lg text-white text-2xl"></a>
+                <a href="https://www.instagram.com/utpfisc/?hl=es"
+                    class="fab fa-instagram fa-lg text-white text-2xl"></a>
+                <a href="https://www.facebook.com/utpfisc/?locale=es_LA"
+                    class="fab fa-facebook fa-lg text-white text-2xl"></a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <p>© 2023 - Universidad Tecnológica de Panamá</p>
+        </div>
+    </footer>
+</body>
+
+</html>
