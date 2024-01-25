@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicia sesion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <!--Wrapping section-->
+    <Section class="flex flex flex-col md:flex-col lg:flex-row items-center justify-center bg-[#EAEAEA]">
+        <div class="flex lg:flex-row text-center md:mt-20 mb-10">
+            <!--Image-->
+            <div class="lg:mt-10 lg:mb-10">
+                <img class="invisible lg:visible lg:size-auto size-0 rounded-md" src="/img/Ciervo.png" alt="">
+            </div>
+
+            <!--Login box-->
+            <div class="shadow-lg p-9 bg-white flex items-center flex-col md:m-10 rounded-md items-center">
+                <h1 class="text-3xl mb-10 font-bold">Fauna y Flora UTP</h1>
+                <p class="mb-4">Accede para poder apreciar la biodiversidad del campus central</p>
+                <input class="bg-[#FAFAFA] rounded-md border-solid border-2 placeholder-gray-500 mt-3 p-1 w-80"
+                    type="email" name="" id="usuario" placeholder="Usuario" required>
+                <input class="bg-[#FAFAFA] rounded-md border-solid border-2 placeholder-gray-500 mt-4 mb-6 p-1 w-80"
+                    type="password" name="" id="contrasena" placeholder="Contraseña" required>
+                <button id="loginBtn" class="hover:bg-[#8F4683] duration-300 py-2 w-80 text-white bg-[#66245B] border-solid border-2 rounded-md">Iniciar
+                        sesion</button>
+                <a href="/reset_password" class="mt-8">Olvidaste tu contraseña?</a>
+                <hr class="w-full my-12 border-1 border-gray-300">
+                <a class="mt-1" href="/register"><button
+                        class="hover:bg-[#81B8B7] duration-300 py-2 w-80 text-white bg-[#69A5A4] border-solid border-2 rounded-md">Registrate</button></a>
+            </div>
+        </div>
+    </Section>
+
+    <div id="NosuccessModal" class="modal hidden fixed bottom-4 right-4 bg-red-100 p-4 rounded">
+        <span class="close text-xl font-bold absolute top-2 right-2 cursor-pointer" onclick="closeModalERROR()">&times;</span>
+        <p class="text-center text-red-800 p-2">ERROR al Ingresar</p>
+    </div>
+
+    <!--footer-->
+    <footer class="bg-[#66245B] text-white text-sm py-8">
+        <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 place-items-center">
+            <!--Logo-->
+            <div class="col-start-2 col-end-2 col-span-3 md:col-span-2 lg:col-span-3">
+                <img src="/img/LogoUtp.png" alt="LOGO UTP" class="size-24 mb-6">
+            </div>
+            <!--Contact-->
+            <div class="col-start-2 col-end-2 col-span-3 text-center mb-6 md:col-span-2  lg:col-span-3">
+                <strong>Contacto</strong><br>
+                Avenida Universidad Tecnológica de Panamá, Vía Puente Centenario, Campus Metropolitano Dr. Victor Levi
+                Sasso, Edificio No. 3, tercer piso. <br>
+                Teléfono: (507)560-3650 <br>
+            </div>
+            <!--Social-->
+            <div class="col-start-2 col-end-2 col-span-3 md:col-span-2 place-items-center  lg:col-span-3">
+                <a href="https://twitter.com/utpfisc?lang=es" class="fab fa-x-twitter fa-lg text-white text-2xl"></a>
+                <a href="https://pa.linkedin.com/company/utpfisc?trk=public_post_follow-view-profile"
+                    class="fab fa-linkedin fa-lg text-white text-2xl"></a>
+                <a href="https://www.youtube.com/@utpfisc2203" class="fab fa-youtube fa-lg text-white text-2xl"></a>
+                <a href="https://www.instagram.com/utpfisc/?hl=es"
+                    class="fab fa-instagram fa-lg text-white text-2xl"></a>
+                <a href="https://www.facebook.com/utpfisc/?locale=es_LA"
+                    class="fab fa-facebook fa-lg text-white text-2xl"></a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <p>© 2023 - Universidad Tecnológica de Panamá</p>
+        </div>
+    </footer>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
