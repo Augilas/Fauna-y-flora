@@ -14,28 +14,28 @@
 <body>
     <div class="flex">
         <!-- Barra de Navegación -->
-        <div class="bg-[#66245B] flex flex-col md:min-h-screen w-screen md:w-1/6 fixed z-10">
-            <div class="flex flex-col items-center lg:flex-row lg:items-center lg:ml-6 lg:mb-16 md:mb-8">
+        <div class="bg-[#66245B] flex flex-col lg:min-h-screen w-screen lg:w-1/6 fixed z-10">
+            <div class="flex flex-col items-center lg:flex-row lg:items-center md:mr-4 lg:ml-6 lg:mb-16 sm:mb-8">
                 <img src="img/LogoUtp.png" alt="LOGO UTP" class="size-20 mr-2 mt-6 mb-2">
-                <h1 class="text-4xl text-white mt-6 font-semibold hidden md:block">UTP</h1>
+                <h1 class="text-4xl text-white lg:mt-6 font-semibold hidden md:block sm:block">UTP</h1>
             </div>
 
             <div class="flex lg:flex-col md:flex-row">
-                <nav class="flex lg:flex-col md:flex-row md:ml-8 ml-6 md:space-x-0 space-x-2"">
-                    <a href=" Home.html" class="text-white text-2xl mb-2 md:mb-6 flex items-center">
-                    <i class="fas fa-home mr-2 md:mr-4 md:ml-0 ml-28"></i>
-                    <span class="hidden md:inline">Inicio</span>
+                <nav class="flex lg:flex-col md:flex-row lg:ml-8 md:ml-56 lg:ml-6 lg:space-x-0 space-x-2">
+                    <a href=" Home.html" class="text-white text-2xl mb-2 lg:mb-6 flex items-center">
+                    <i class="fas fa-home mr-2 lg:mr-4 lg:ml-0 md:ml-20 ml-32"></i>
+                    <span class="hidden lg:inline">Inicio</span>
                     </a>
 
                     <a href="RegistrarFloraFauna.html"
-                        class="publish-btn text-white text-2xl mb-2 md:mb-6 flex items-center">
-                        <i class="fas fa-plus-circle mr-2 md:mr-4"></i>
-                        <span class="hidden md:inline">Publicar</span>
+                        class="publish-btn text-white text-2xl mb-2 lg:mb-6 flex items-center">
+                        <i class="fas fa-plus-circle mr-2 lg:mr-4"></i>
+                        <span class="hidden lg:inline">Publicar</span>
                     </a>
 
-                    <a href="#" class="text-white text-2xl mb-2 md:mb-56 flex items-center">
-                        <i class="fas fa-user mr-2 md:mr-4"></i>
-                        <span class="hidden md:inline">Perfil</span>
+                    <a href="#" class="text-white text-2xl mb-2 lg:mb-56 flex items-center">
+                        <i class="fas fa-user mr-2 lg:mr-4"></i>
+                        <span class="hidden lg:inline">Perfil</span>
                     </a>
 
                     <ul class="flex flex-row items-center">
@@ -50,28 +50,28 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="text-white mb-3 text-2xl hidden md:inline">Mas</li>
+                        <li class="text-white mb-3 text-2xl hidden lg:inline">Mas</li>
                     </ul>
                 </nav>
             </div>
         </div>
 
         <!-- Formulario para Registrar -->
-        <div class="bg-[#EAEAEA] lg:w-full md:w-1/2 md:mt-0 mt-20">
+        <div class="bg-[#EAEAEA] lg:w-full sm:w-1/2 md:w-full lg:mt-0 md:mt-44 mt-20">
             <br><br><br><br>
-            <section class="lg:ml-96">
+            <section class="lg:ml-96 md:ml-28 col-span-1">
                 <div class="mt-16 lg:ml-44 md:ml-28 shadow-lg p-0.5 bg-white md:w-1/2">
                     <div class="mt-14 mb-10 justify-center">
-                        <h1 class="ml-4 md:ml-24  text-4xl font-bold mb-6">Registrar flora o fauna</h1>
+                        <h1 class="lg:ml-28 sm:ml-4 md:ml-8 text-4xl md:text-3xl font-bold mb-6">Registrar flora o fauna</h1>
                     </div>
 
                     <div class="mt-12 mb-8 items-center justify-center ">
                         <form action="">
 
                             <div class="mb-8">
-                                <label for="nombre" class="text-lg font-semibold md:ml-7 ">Tipo de Publicación:</label>
+                                <label for="nombre" class="text-lg font-semibold lg:ml-7 md:ml-4">Tipo de Publicación:</label>
                                 <select name="tipo" id="tipo"
-                                    class="md:ml-12 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
+                                    class="lg:ml-12 md:ml-24 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
                                     <option value="" disabled selected style="display:none">Selecciona una opción
                                     </option>
                                     <option value="sendero" class="bg-[#66245B] text-white">Flora</option>
@@ -80,17 +80,17 @@
                             </div>
 
                             <div class="mb-8">
-                                <label for="nombre" class="text-lg font-semibold md:ml-7 ">Nombre común:</label>
+                                <label for="nombre" class="text-lg font-semibold lg:ml-7 md:ml-4">Nombre común:</label>
                                 <input type="text"
-                                    class="md:ml-20 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5"
+                                    class="lg:ml-20 md:ml-24 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5"
                                     id="nombre" name="nombre" required>
                             </div>
 
                             <div class="mb-8">
-                                <label for="nombre" class="text-lg font-semibold md:ml-7 ">Lugar del
+                                <label for="nombre" class="text-lg font-semibold lg:ml-7 md:ml-4">Lugar del
                                     avistamiento:</label>
                                 <select name="lugares" id="lugares"
-                                    class="md:ml-6 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
+                                    class="lg:ml-6 md:ml-24 md:mt-4 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
                                     <option value="" disabled selected style="display:none">Selecciona una opción
                                     </option>
                                     <option value="sendero" class="bg-[#66245B] text-white">Sendero Ecológico UTP
@@ -115,13 +115,13 @@
                             </div>
 
                             <div class="mb-14">
-                                <label for="imagen" class="text-lg font-semibold md:ml-7">Cargar Imagen:</label>
+                                <label for="imagen" class="text-lg font-semibold lg:ml-7 md:ml-4">Cargar Imagen:</label>
                                 <input type="file"
-                                    class="md:ml-24 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5 "
+                                    class="lg:ml-24 md:ml-24 md:mt-4 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5 "
                                     id="imagen" name="imagen" accept="image/*">
                             </div>
 
-                            <div class="md:ml-60">
+                            <div class="lg:ml-60 md:ml-32">
                                 <button type="submit"
                                     class="text-white bg-[#66245B] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-5 py-2.5">Publicar</button>
                             </div>
