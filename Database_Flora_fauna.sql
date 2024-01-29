@@ -83,7 +83,6 @@ constraint Lugar_flora_estudiante_PK primary key (Cod_lugar_flora, Cod_flora_Lug
 
 
 /*-----------------------------USUARIOS--------------------------*/
-
 CREATE TABLE Usuario (
     Cod_usuario INT IDENTITY CONSTRAINT Cod_usuario_PK PRIMARY KEY,
     Usuario VARCHAR(30) 
@@ -331,21 +330,37 @@ as
 
 --Registro estudiante
 CREATE PROCEDURE InsertarUsuario
-	@nombre_estudiante varchar (20),
-	@apellido_estudiante varchar (30),
+    @nombre_estudiante varchar(20),
+    @apellido_estudiante varchar(30),
     @cedula varchar(14),
-	@correo varchar(50),
-	@usuario varchar(30),
-	@password varchar(80)
-	AS
-	BEGIN
-		Insert into estudiante (Cedula_estudiante, Nombre_estudiante, Apellido_estudiante, Correo_estudiante)
-		values (@cedula, @nombre_estudiante, @apellido_estudiante, @correo)
-		Insert into usuario (Usuario, Contrasena, Cod_tipo, Cedula_estudiante)
-		Values (@usuario,@password, 1, @cedula)	
-	END
+    @correo varchar(50),
+    @usuario varchar(30),
+    @password varchar(80)
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION; 
+        IF NOT EXISTS (SELECT 1 FROM usuario WHERE Usuario = @usuario) and NOT EXISTS (select 1 from Estudiante where Correo_estudiante = @correo or Cedula_estudiante = @cedula)
+        BEGIN
 
-GRANT EXECUTE ON dbo.InsertarUsuario TO Test;
+            Insert into estudiante (Cedula_estudiante, Nombre_estudiante, Apellido_estudiante, Correo_estudiante)
+            values (@cedula, @nombre_estudiante, @apellido_estudiante, @correo);
+
+            Insert into usuario (Usuario, Contrasena, Cod_tipo, Cedula_estudiante)
+            Values (@usuario, @password, 1, @cedula);
+        END
+        ELSE
+        BEGIN
+            PRINT 'Error: User already exists';
+        END
+    END TRY
+    BEGIN CATCH
+        ROLLBACK; 
+    END CATCH
+END;
+
+
+GRANT EXECUTE ON OBJECT::InsertarUsuario to Test
 
 CREATE PROCEDURE BuscarUsuario
     @correo VARCHAR(50),
@@ -380,12 +395,12 @@ create procedure CambioContrasena
 as
 begin
 	declare @correo varchar(50)
-	declare @cedula varchar(14)
+	declare @cedula varchar(15)
 	select @correo = correo from Token where token = @token
 
 	IF EXISTS(SELECT * FROM Biologo WHERE Correo_biologo = @correo)
 		begin
-		select @cedula = Cedula_biologo from Biologo
+		select @cedula = Cedula_biologo from Biologo where Correo_biologo = @correo
 		update Usuario
 		set Contrasena = @contrasena
 		where Cedula_biologo = @cedula
@@ -394,7 +409,7 @@ begin
 		end
     ELSE IF EXISTS(SELECT * FROM Administrador WHERE correo_admin = @correo)
 		begin
-		select @cedula = Cedula_admin from Administrador
+		select @cedula = Cedula_admin from Administrador where Correo_admin = @correo
 		update Usuario
 		set Contrasena = @contrasena
 		where Cedula_admin = @cedula
@@ -403,7 +418,7 @@ begin
 		end
     ELSE
 		begin
-		select @cedula = Cedula_estudiante from Estudiante
+		select @cedula = Cedula_estudiante from Estudiante where Correo_estudiante = @correo
 		update Usuario
 		set Contrasena = @contrasena
 		where Cedula_estudiante = @cedula
@@ -414,12 +429,23 @@ end
 
 GRANT EXECUTE ON dbo.CambioContrasena TO Test;
 
-insert into Fauna (Nombre_comun_animal)
-values ('Colibri')
+--- Tipos de usuarios
+insert into Tipo_usuario
+values (1, 'Usuario'),
+		(2, 'Biologo'),
+		(3, 'Administrador')
 
-select * from fauna
 
-insert into Comentarios_fauna (Cod_animal_comentarios, Comentario_animal)
-values ('1-1000','Muy bonito')
-
-select * from Comentarios_fauna
+insert into Lugar
+values ('sendero'),
+		('aljibe'), 
+		('parque pitagora'), 
+		('chato park'), 
+		('cancha fut'), 
+		('cancha baloncesto'), 
+		('escalera'), 
+		('edificio1'),
+		('edificio2'),
+		('edificio3'),
+		('edificio4'),
+		('edicio de labs')
