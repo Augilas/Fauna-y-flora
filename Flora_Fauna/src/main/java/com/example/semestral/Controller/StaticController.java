@@ -57,4 +57,14 @@ public class StaticController {
             return "redirect:login";
         }
     }
+
+    @GetMapping("/help")
+    public String Ayuda() {
+        return "Ayuda.html";
+    }
+
+    @GetMapping("/post")
+    public String Post() {
+        return "RegistrarFloraFauna.html";
+    }
 }
