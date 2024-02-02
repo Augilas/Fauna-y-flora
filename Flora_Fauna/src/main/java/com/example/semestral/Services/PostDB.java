@@ -1,5 +1,6 @@
 package com.example.semestral.Services;
 
+import com.example.semestral.Model.Comentario;
 import com.example.semestral.Model.Post;
 
 import java.sql.Connection;
@@ -167,5 +168,24 @@ public class PostDB {
             e.printStackTrace();
             return -1;
         }
+    }
+    //arreglar
+    public int GuardarComentario(Comentario coment, String user) {
+        try {
+            String Cod_flora = "";
+            String selectCodFaunaQuery = "select Cod_animal from Fauna where Nombre_comun_animal = ?";
+            PreparedStatement selectFaunaPstmt = _cn.prepareStatement(selectCodFaunaQuery);
+            selectFaunaPstmt.setInt(1, coment.getCod_animal());
+            ResultSet rws = selectFaunaPstmt.executeQuery();
+            while (rws.next()) {
+                Cod_flora = rws.getString("Cod_animal");
+            }
+            rws.close();
+            selectFaunaPstmt.close();
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.semestral.Controller;
 
+import com.example.semestral.Model.Comentario;
 import com.example.semestral.Model.Post;
 import com.example.semestral.Services.PostDB;
 import com.example.semestral.Services.UserDB;
@@ -37,6 +38,25 @@ public class PostController {
                         .getBody();
             String sub = claims.getSubject();
             return new PostDB().GuardarPost(post, sub);
+        } else {
+            return 0;
+        }
+    }
+
+    @PostMapping("/coment")
+    public int InsertarComentario(@RequestBody Comentario coment, HttpServletRequest request) {
+        String token = Arrays.stream(request.getCookies())
+                .filter(cookie -> "token".equals(cookie.getName()))
+                .map(Cookie::getValue)
+                .findAny()
+                .orElse(null);
+        if (token != null) {
+            Claims claims = Jwts.parser()
+                        .setSigningKey(getSigningKey(SUPER_SECRET_KEY))
+                        .parseClaimsJws(token)
+                        .getBody();
+            String sub = claims.getSubject();
+            return new PostDB().GuardarComentario(coment, sub);
         } else {
             return 0;
         }

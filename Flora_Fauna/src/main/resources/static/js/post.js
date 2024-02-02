@@ -9,7 +9,7 @@ function Registro() {
     const tokenValue = document.cookie.split('; ')
         .find(cookie => cookie.startsWith('token'))
         ?.split('=')[1];
-    console.log(tipo, nombre, lugar)
+
     if (file) {
         const reader = new FileReader();
         reader.onload = function (event) {

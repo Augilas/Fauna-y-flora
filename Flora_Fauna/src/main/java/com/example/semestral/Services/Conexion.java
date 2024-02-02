@@ -9,7 +9,7 @@ public class Conexion {
     public Connection openDb() {
         try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-          return DriverManager.getConnection("jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;databaseName=flora_fauna_utp","Test","12345");
+          return DriverManager.getConnection("jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;databaseName=flora_fauna_utp","FloraFauna","12345");
         } catch (SQLException e) {
           int x = 1;
         } catch (ClassNotFoundException cnfex) {

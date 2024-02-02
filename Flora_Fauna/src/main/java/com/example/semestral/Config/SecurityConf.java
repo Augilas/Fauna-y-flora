@@ -25,11 +25,11 @@ class SecurityConf {
                 http
                                 .csrf(AbstractHttpConfigurer::disable)
                                 .authorizeHttpRequests(request -> request
-                                                .requestMatchers(HttpMethod.POST,"/auth/**", "/api/post").permitAll()
+                                                .requestMatchers(HttpMethod.POST,"/auth/**").permitAll()
                                                 .requestMatchers(HttpMethod.POST,"/perfil/**").authenticated()
-                                                .requestMatchers("/img/**", "/css/**", "/js/**", "/Registro.html", "/Login.html", "/PasswordReset.html", "/Ayuda.html").permitAll()
-                                                .requestMatchers("/login", "/register", "/reset_password", "/help").permitAll()
-                                                .requestMatchers("/RegistrarFloraFauna.html", "/post").hasAuthority("Usuario")
+                                                .requestMatchers("/img/**", "/css/**", "/js/**", "/Registro.html", "/Login.html", "/PasswordReset.html", "/Ayuda.html", "/Home.html").permitAll()
+                                                .requestMatchers("/login", "/register", "/reset_password", "/help", "/", "comentarios/**").permitAll()
+                                                .requestMatchers("/RegistrarFloraFauna.html", "/post", "/api/post").hasAuthority("Usuario")
                                                 .requestMatchers("/change_password", "/PasswordResetConfirm.html").permitAll()
                                                 .anyRequest()
                                                 .authenticated())

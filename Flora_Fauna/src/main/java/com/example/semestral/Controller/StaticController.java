@@ -48,6 +48,7 @@ public class StaticController {
             HttpEntity<Rpassword> rq = new HttpEntity<>(rp, headers);
             ResponseEntity<Boolean> responseEntity = restTemplate.postForEntity(url, rq, Boolean.class);
             boolean resultado = responseEntity.getBody();
+            
             if (resultado) {
                 return "PasswordResetConfirm.html";
             } else {
@@ -66,5 +67,9 @@ public class StaticController {
     @GetMapping("/post")
     public String Post() {
         return "RegistrarFloraFauna.html";
+    }
+    @GetMapping("/")
+    public String Home() {
+        return "Home.html";
     }
 }
