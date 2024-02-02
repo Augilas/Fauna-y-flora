@@ -22,7 +22,9 @@ references Fauna(Cod_animal),
 Comentario_animal varchar(500),
 Fecha_comentario_fauna datetime,
 constraint Cod_animal_Comentario_animal_Comentarios_fauna_PK primary key
-(Cod_animal_comentarios, Comentario_animal)
+(Cod_animal_comentarios, Comentario_animal),
+Cod_usuario int 
+constraint Comentarios_fauna_cod_usuariofk foreign key references Usuario(Cod_usuario)
 )
 
 --Flora
@@ -43,7 +45,10 @@ references Flora(Cod_flora),
 Comentario_flora varchar(500),
 Fecha_comentario_flora datetime
 constraint Cod_flora_Comentario_flora_Comentarios_flora_PK primary key
-(Cod_flora_comentarios, Comentario_flora)
+(Cod_flora_comentarios, Comentario_flora),
+Cod_usuario int 
+constraint Comentarios_flora_cod_usuariofk foreign key references Usuario(Cod_usuario)
+
 )
 
 --Lugar
@@ -292,17 +297,17 @@ instead of insert
 	declare 
 	@cod_animal varchar(6),
 	@Comentario_animal varchar(500),
-	@Fecha_comentario datetime;
-
+	@Fecha_comentario datetime,
+	@Cod_usuario int;
 	SELECT
         @cod_animal = inserted.Cod_animal_comentarios,
-        @Comentario_animal = inserted.Comentario_animal
-		
+        @Comentario_animal = inserted.Comentario_animal,
+		@Cod_usuario = inserted.Cod_usuario
     FROM
         inserted;
 
-			INSERT INTO Comentarios_fauna (Cod_animal_comentarios, Comentario_animal, Fecha_comentario_fauna)
-			VALUES (@cod_animal, @Comentario_animal, GETDATE())
+			INSERT INTO Comentarios_fauna (Cod_animal_comentarios, Comentario_animal, Fecha_comentario_fauna, Cod_usuario)
+			VALUES (@cod_animal, @Comentario_animal, GETDATE(), @Cod_usuario)
 	end
 
 
@@ -315,17 +320,17 @@ as
 	declare 
 	@cod_flora varchar(6),
 	@Comentario_flora varchar(500),
-	@Fecha_comentario datetime;
-
+	@Fecha_comentario datetime,
+	@Cod_usuario int;
 	SELECT
         @cod_flora = inserted.Cod_flora_comentarios,
-        @Comentario_flora = inserted.Comentario_flora
-		
+        @Comentario_flora = inserted.Comentario_flora,
+		@Cod_usuario = inserted.Cod_usuario
     FROM
         inserted;
 
-			INSERT INTO Comentarios_flora (Cod_flora_comentarios, Comentario_flora, Fecha_comentario_flora)
-			VALUES (@cod_flora, @Comentario_flora, GETDATE())
+			INSERT INTO Comentarios_flora (Cod_flora_comentarios, Comentario_flora, Fecha_comentario_flora, Cod_usuario)
+			VALUES (@cod_flora, @Comentario_flora, GETDATE(), @Cod_usuario)
 	end
 
 --Registro estudiante
@@ -340,14 +345,15 @@ AS
 BEGIN
     BEGIN TRY
         BEGIN TRANSACTION; 
-        IF NOT EXISTS (SELECT 1 FROM usuario WHERE Usuario = @usuario) and NOT EXISTS (select 1 from Estudiante where Correo_estudiante = @correo or Cedula_estudiante = @cedula)
+        IF NOT EXISTS (SELECT 1 FROM usuario WHERE Usuario = @usuario) AND NOT EXISTS (SELECT 1 FROM Estudiante WHERE Correo_estudiante = @correo OR Cedula_estudiante = @cedula)
         BEGIN
+            INSERT INTO Estudiante (Cedula_estudiante, Nombre_estudiante, Apellido_estudiante, Correo_estudiante)
+            VALUES (@cedula, @nombre_estudiante, @apellido_estudiante, @correo);
 
-            Insert into estudiante (Cedula_estudiante, Nombre_estudiante, Apellido_estudiante, Correo_estudiante)
-            values (@cedula, @nombre_estudiante, @apellido_estudiante, @correo);
+            INSERT INTO Usuario (Usuario, Contrasena, Cod_tipo, Cedula_estudiante)
+            VALUES (@usuario, @password, 1, @cedula);
 
-            Insert into usuario (Usuario, Contrasena, Cod_tipo, Cedula_estudiante)
-            Values (@usuario, @password, 1, @cedula);
+            COMMIT TRANSACTION; 
         END
         ELSE
         BEGIN
@@ -355,12 +361,11 @@ BEGIN
         END
     END TRY
     BEGIN CATCH
-        ROLLBACK; 
+        ROLLBACK TRANSACTION; 
     END CATCH
 END;
 
-
-GRANT EXECUTE ON OBJECT::InsertarUsuario to Test
+GRANT EXECUTE ON OBJECT::InsertarUsuario to FloraFauna
 
 CREATE PROCEDURE BuscarUsuario
     @correo VARCHAR(50),
@@ -384,7 +389,7 @@ BEGIN
         END
 END
 
-GRANT EXECUTE ON dbo.BuscarUsuario TO Test;
+GRANT EXECUTE ON dbo.BuscarUsuario TO FloraFauna;
 
 
 
@@ -427,7 +432,8 @@ begin
 		end
 end
 
-GRANT EXECUTE ON dbo.CambioContrasena TO Test;
+GRANT EXECUTE ON dbo.CambioContrasena TO FloraFauna;
+
 
 --- Tipos de usuarios
 insert into Tipo_usuario
@@ -449,3 +455,20 @@ values ('sendero'),
 		('edificio3'),
 		('edificio4'),
 		('edicio de labs')
+
+insert into Comentarios_flora(Cod_flora_comentarios, Comentario_flora, Cod_usuario)
+values ('2-1000', 'Me gustaa el ñequeee', 5)
+
+SELECT f.Nombre_comun_flora AS NombreAnimal,
+       (SELECT e.Nombre_estudiante + ' ' + e.Apellido_estudiante AS Nombre,
+               cf.Comentario_flora AS Comentario
+        FROM Comentarios_flora cf
+        JOIN Usuario u ON cf.Cod_usuario = u.Cod_usuario
+        JOIN Estudiante e ON e.Cedula_estudiante = u.Cedula_estudiante
+        WHERE cf.Cod_flora_comentarios = f.Cod_flora
+        FOR JSON PATH) AS Comentarios
+FROM Flora f
+
+
+
+
