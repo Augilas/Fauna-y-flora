@@ -21,21 +21,21 @@ public class PostDB {
 
         try {
             if ("flora".equals(post.getTipo())) {
-                //Verifica si ya existe con ese nombre
+                // Verifica si ya existe con ese nombre
                 String VerifQuery = "SELECT COUNT(*) AS count FROM Flora WHERE Nombre_comun_flora = ?";
                 PreparedStatement selectVerifPstmt = _cn.prepareStatement(VerifQuery);
                 selectVerifPstmt.setString(1, post.getNombre());
                 ResultSet rwws = selectVerifPstmt.executeQuery();
-                
+
                 boolean plantaExistente = false;
-                
+
                 if (rwws.next()) {
                     int count = rwws.getInt("count");
                     plantaExistente = count > 0;
                 }
-                
+
                 rwws.close();
-                selectVerifPstmt.close();                
+                selectVerifPstmt.close();
 
                 if (!plantaExistente) {
                     String insertQuery = "INSERT INTO Flora (Nombre_comun_flora, Imagen_flora) VALUES (?, ?)";
@@ -43,7 +43,7 @@ public class PostDB {
                     insertPstmt.setString(1, post.getNombre());
                     insertPstmt.setBytes(2, post.getbase64String());
                     insertPstmt.executeUpdate();
-    
+
                     // Segunda consulta: seleccionar Cedula_estudiante de la tabla Usuario y
                     String selectQuery = "SELECT u.Cedula_estudiante " +
                             "FROM Usuario u " +
@@ -57,7 +57,7 @@ public class PostDB {
                     }
                     rs.close();
                     selectPstmt.close();
-    
+
                     // Tercera consulta: seleccionar Cod_lugar de la tabla Lugar
                     String selectLugarQuery = "SELECT Cod_lugar FROM Lugar WHERE Nombre_lugar = ?";
                     PreparedStatement selectLugarPstmt = _cn.prepareStatement(selectLugarQuery);
@@ -68,7 +68,7 @@ public class PostDB {
                     }
                     lugarRs.close();
                     selectLugarPstmt.close();
-    
+
                     // Cuarta consulta: seleccionar Cod_Flora de la tabla Flora
                     String selectCodFloraQuery = "select Cod_flora from Flora where Nombre_comun_flora = ?";
                     PreparedStatement selectFloraPstmt = _cn.prepareStatement(selectCodFloraQuery);
@@ -79,7 +79,7 @@ public class PostDB {
                     }
                     rws.close();
                     selectFloraPstmt.close();
-    
+
                     // Quinta consulta: Ternaria
                     String insertQuery2 = "insert into Lugar_flora_estudiante (Cod_lugar_flora, Cod_flora_Lugar_flora, Cedula_estudiante_lugar_flora) values (?, ?, ?)";
                     PreparedStatement insertPstmt2 = _cn.prepareStatement(insertQuery2);
@@ -87,27 +87,27 @@ public class PostDB {
                     insertPstmt2.setString(2, Cod_flora);
                     insertPstmt2.setString(3, cedula);
                     insertPstmt2.executeUpdate();
-    
+
                     return 1;
                 } else {
                     return 0;
                 }
             } else {
-                //Verifica si ya existe con ese nombre
+                // Verifica si ya existe con ese nombre
                 String VerifQuery = "SELECT COUNT(*) AS count FROM Fauna WHERE Nombre_comun_animal = ?";
                 PreparedStatement selectVerifPstmt = _cn.prepareStatement(VerifQuery);
                 selectVerifPstmt.setString(1, post.getNombre());
                 ResultSet rwws = selectVerifPstmt.executeQuery();
-                
+
                 boolean animalExistente = false;
-                
+
                 if (rwws.next()) {
                     int count = rwws.getInt("count");
                     animalExistente = count > 0;
                 }
-                
+
                 rwws.close();
-                selectVerifPstmt.close();                
+                selectVerifPstmt.close();
 
                 if (!animalExistente) {
                     String insertQuery = "INSERT INTO Fauna (Nombre_comun_animal, Imagen_animal) VALUES (?, ?)";
@@ -115,7 +115,7 @@ public class PostDB {
                     insertPstmt.setString(1, post.getNombre());
                     insertPstmt.setBytes(2, post.getbase64String());
                     insertPstmt.executeUpdate();
-    
+
                     // Segunda consulta: seleccionar Cedula_estudiante de la tabla Usuario y
                     String selectQuery = "SELECT u.Cedula_estudiante " +
                             "FROM Usuario u " +
@@ -129,7 +129,7 @@ public class PostDB {
                     }
                     rs.close();
                     selectPstmt.close();
-    
+
                     // Tercera consulta: seleccionar Cod_lugar de la tabla Lugar
                     String selectLugarQuery = "SELECT Cod_lugar FROM Lugar WHERE Nombre_lugar = ?";
                     PreparedStatement selectLugarPstmt = _cn.prepareStatement(selectLugarQuery);
@@ -140,7 +140,7 @@ public class PostDB {
                     }
                     lugarRs.close();
                     selectLugarPstmt.close();
-    
+
                     // Cuarta consulta: seleccionar Cod_Flora de la tabla Flora
                     String selectCodFaunaQuery = "select Cod_animal from Fauna where Nombre_comun_animal = ?";
                     PreparedStatement selectFaunaPstmt = _cn.prepareStatement(selectCodFaunaQuery);
@@ -151,7 +151,7 @@ public class PostDB {
                     }
                     rws.close();
                     selectFaunaPstmt.close();
-    
+
                     // Quinta consulta: Ternaria
                     String insertQuery2 = "insert into Lugar_fauna_estudiante (Cod_lugar_fauna, Cod_animal_lugar_fauna, Cedula_estudiante_lugar_fauna) values (?, ?, ?)";
                     PreparedStatement insertPstmt2 = _cn.prepareStatement(insertQuery2);
@@ -169,19 +169,28 @@ public class PostDB {
             return -1;
         }
     }
-    //arreglar
+
+    // arreglar
     public int GuardarComentario(Comentario coment, String user) {
+        String cod_estudiante = "";
         try {
-            String Cod_flora = "";
-            String selectCodFaunaQuery = "select Cod_animal from Fauna where Nombre_comun_animal = ?";
-            PreparedStatement selectFaunaPstmt = _cn.prepareStatement(selectCodFaunaQuery);
-            selectFaunaPstmt.setInt(1, coment.getCod_animal());
-            ResultSet rws = selectFaunaPstmt.executeQuery();
-            while (rws.next()) {
-                Cod_flora = rws.getString("Cod_animal");
+            //Encuentra el usuario
+            String selectQuery = "select Cod_usuario from Usuario where Usuario = ?";
+            PreparedStatement selectPstmt = _cn.prepareStatement(selectQuery);
+            selectPstmt.setString(1, user);
+            ResultSet rs = selectPstmt.executeQuery();
+            while (rs.next()) {
+                cod_estudiante = rs.getString("Cod_usuario");
             }
-            rws.close();
-            selectFaunaPstmt.close();
+            rs.close();
+            selectPstmt.close();
+
+            String insertQuery = "insert into Comentarios_flora(Cod_flora_comentarios, Comentario_flora, Cod_usuario) values (?, ?, ?)";
+            PreparedStatement insertPstmt = _cn.prepareStatement(insertQuery);
+            insertPstmt.setString(1, coment.getCod());
+            insertPstmt.setString(2, coment.getComentario());
+            insertPstmt.setString(2, cod_estudiante);
+            insertPstmt.executeUpdate();
             return 0;
         } catch (Exception e) {
             e.printStackTrace();

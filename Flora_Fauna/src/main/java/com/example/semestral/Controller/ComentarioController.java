@@ -16,7 +16,7 @@ public class ComentarioController {
     @GetMapping("/animales")
     public List<GetPost> obtenerComentariosPorAnimal() {
         return new PostFloraFauna().obtenerComentariosPorAnimal();
-    }
+    }   
 
     @GetMapping("/plantas")
     public List<GetPost> obtenerComentariosPorPlanta() {

@@ -2,15 +2,21 @@ package com.example.semestral.Model;
 
 public class GetPost {
     private String nombre;
+    private String comentarios;
+    private byte[] base64String;
+    private String cod;
+    public String getCod() {
+        return cod;
+    }
+    public void setCod(String cod) {
+        this.cod = cod;
+    }
     public String getNombre() {
         return nombre;
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    private String comentarios;
-    private byte[] base64String;
-
     public String getComentarios() {
         return comentarios;
     }

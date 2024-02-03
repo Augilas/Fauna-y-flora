@@ -21,7 +21,7 @@ public class PostFloraFauna {
 
         try {
             Statement statement = _cn.createStatement();
-            String query = "SELECT f.Nombre_comun_flora AS NombreFlora, f.Imagen_flora as Imagen," +
+            String query = "SELECT f.Nombre_comun_flora AS NombreFlora, f.Imagen_flora as Imagen, f.Cod_flora as COD," +
                     "(SELECT e.Nombre_estudiante + ' ' + e.Apellido_estudiante AS Nombre, " +
                     "        cf.Comentario_flora AS Comentario " +
                     " FROM Comentarios_flora cf " +
@@ -35,11 +35,13 @@ public class PostFloraFauna {
             while (resultSet.next()) {
                 String nombreAnimal = resultSet.getString("NombreFlora");
                 String comentariosJson = resultSet.getString("Comentarios");
+                String cod = resultSet.getString("COD");
                 byte[] imagen = resultSet.getBytes("Imagen");
                 GetPost comentario = new GetPost();
                 comentario.setNombre(nombreAnimal);
-                comentario.setComentarios(comentariosJson);
+                comentario.setCod(cod);
                 comentario.setBase64String(imagen);
+                comentario.setComentarios(comentariosJson);
                 comentarios.add(comentario);
             }
 
@@ -59,7 +61,7 @@ public class PostFloraFauna {
 
         try {
             Statement statement = _cn.createStatement();
-            String query = "SELECT f.Nombre_comun_animal AS NombreAnimal, f.Imagen_animal as Imagen, " +
+            String query = "SELECT f.Nombre_comun_animal AS NombreAnimal, f.Imagen_animal as Imagen, f.Cod_animal as COD," +
             "(SELECT e.Nombre_estudiante + ' ' + e.Apellido_estudiante AS Nombre, cf.Comentario_animal AS Comentario " +
             " FROM Comentarios_fauna cf " +
             " JOIN Usuario u ON cf.Cod_usuario = u.Cod_usuario " +
@@ -72,8 +74,10 @@ public class PostFloraFauna {
                 String nombreAnimal = resultSet.getString("NombreAnimal");
                 String comentariosJson = resultSet.getString("Comentarios");
                 byte[] imagen = resultSet.getBytes("Imagen");
+                String cod = resultSet.getString("COD");
                 GetPost comentario = new GetPost();
                 comentario.setNombre(nombreAnimal);
+                comentario.setCod(cod);
                 comentario.setComentarios(comentariosJson);
                 comentario.setBase64String(imagen);
                 comentarios.add(comentario);

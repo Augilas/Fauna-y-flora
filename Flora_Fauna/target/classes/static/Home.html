@@ -11,8 +11,13 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
-    <div class="flex">
+<body onload="obtenerComentarios()">
+    <div class="flex flex-col min-h-screen">
+        <!-- Contenido Principal -->
+        <div class="flex flex-col lg:flex-row pl-80">
+            <div id="contenedor-cartas"></div>
+        </div>
+        
         <!-- Barra de Navegación -->
         <div class="bg-[#66245B] flex flex-col lg:min-h-screen w-screen lg:w-1/6 fixed z-10">
             <div class="flex flex-col items-center lg:flex-row lg:items-center md:mr-4 lg:ml-6 lg:mb-16 sm:mb-8">
@@ -55,9 +60,8 @@
                 </nav>
             </div>
         </div>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
-
+    
     <footer class="bg-[#444444] text-white text-sm py-8 z-20 relative">
         <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 place-items-center">
             <!--Logo-->
@@ -89,7 +93,7 @@
             <p>© 2023 - Universidad Tecnológica de Panamá</p>
         </div>
     </footer>
-
+    <script src="js/Home.js"></script>
 </body>
 
 </html>
