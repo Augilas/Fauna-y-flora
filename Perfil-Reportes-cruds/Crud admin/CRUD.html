@@ -14,7 +14,7 @@
      <!-- Barra de Navegación -->
      <div class="bg-[#66245B] flex flex-col lg:min-h-screen w-screen lg:w-1/6 fixed z-10">
         <div class="flex flex-col items-center lg:flex-row lg:items-center md:mr-4 lg:ml-6 lg:mb-16 sm:mb-8">
-            <img src="img/LogoUtp" alt="LOGO UTP" class="size-20 mr-2 mt-6 mb-2">
+            <img src="img/utp-logo-blco.png" alt="LOGO UTP" class="size-20 mr-2 mt-6 mb-2">
             <h1 class="text-4xl text-white lg:mt-6 font-semibold hidden md:block sm:block">UTP</h1>
         </div>
 
@@ -60,6 +60,17 @@
             <br><br><br>
             <div class="">
                 <form class="grid grid-cols-4">
+                    <div>
+                        <label for="fauna_o_flora">Buscar fauna o flora</label><br>
+                        <select name="tipo" id="tipo"
+                            class=" w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
+                            <option value="" disabled selected style="display:none">Selecciona una opción
+                            </option>
+                            <option value="sendero" class="bg-[#66245B] text-white">Fauna</option>
+                            <option value="sendero" class="bg-[#66245B] text-white">Flora</option>
+                        </select>
+                    </div>
+
                     <div>
                         <label for="comun_n">Nombre comun</label><br>
                     <input class="border rounded-full" type="text" id="comun_n" name="comun_n">
@@ -111,13 +122,30 @@
                     </div> 
                 </form>
                 <br>
-                <div>
+                <div class="flex">
                     <div class="text-white font-semibold">
                         <button  class="w-52 h-10 mr-4 border rounded-full bg-[#66245B]">Buscar</button>
                         <button  class="w-52 h-10 border rounded-full bg-[#66245B]">Actualizar</button>
                     </div>
-                    <div>
-                        
+
+                    <div class="flex mb-8">
+                        <label for="selec_tablas" class="text-lg font-semibold w-96 lg:ml-7 md:ml-4">Seleccione la tabla que desea ver:</label>
+                        <select name="tipo" id="tipo"
+                            class="lg:ml-12 md:ml-24 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
+                            <option value="" disabled selected style="display:none">Selecciona una opción
+                            </option>
+                            <option value="sendero" class="bg-[#66245B] text-white">Usuario</option>
+                            <option value="aljibe" class="bg-[#66245B] text-white">Estudiante</option>
+                            <option value="aljibe" class="bg-[#66245B] text-white">Biologo</option>
+                            <option value="aljibe" class="bg-[#66245B] text-white">Biologo_fauna</option>
+                            <option value="aljibe" class="bg-[#66245B] text-white">Fauna</option>
+                            <option value="aljibe" class="bg-[#66245B] text-white">Comentarios_fauna</option>
+                            <option value="aljibe" class="bg-[#66245B] text-white">Flora</option>
+                            <option value="aljibe" class="bg-[#66245B] text-white">Comentarios_flora</option>
+                            <option value="aljibe" class="bg-[#66245B] text-white">Lugar</option>
+                            <option value="aljibe" class="bg-[#66245B] text-white">Administrador</option>
+                            
+                        </select>
                     </div>
                 </div>
                 <br><br>
@@ -210,7 +238,7 @@
         <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 place-items-center">
             <!--Logo-->
             <div class="col-start-2 col-end-2 col-span-3 md:col-span-2 lg:col-span-3">
-                <img src="img/LogoUtp.png" alt="LOGO UTP" class="size-24 mb-6">
+                <img src="img/utp-logo-blco.png" alt="LOGO UTP" class="size-24 mb-6">
             </div>
             <!--Contact-->
             <div class="col-start-2 col-end-2 col-span-3 text-center mb-6 md:col-span-2  lg:col-span-3">
