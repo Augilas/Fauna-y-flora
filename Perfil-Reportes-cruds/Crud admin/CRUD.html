@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+     <!-- Barra de Navegación -->
+     <div class="bg-[#66245B] flex flex-col lg:min-h-screen w-screen lg:w-1/6 fixed z-10">
+        <div class="flex flex-col items-center lg:flex-row lg:items-center md:mr-4 lg:ml-6 lg:mb-16 sm:mb-8">
+            <img src="img/LogoUtp" alt="LOGO UTP" class="size-20 mr-2 mt-6 mb-2">
+            <h1 class="text-4xl text-white lg:mt-6 font-semibold hidden md:block sm:block">UTP</h1>
+        </div>
+
+        <div class="flex lg:flex-col md:flex-row">
+            <nav class="flex lg:flex-col md:flex-row lg:ml-8 md:ml-56 lg:ml-6 lg:space-x-0 space-x-2">
+                <a href=" Home.html" class="text-white text-2xl mb-2 lg:mb-6 flex items-center">
+                    <i class="fas fa-home mr-2 lg:mr-4 lg:ml-0 md:ml-20 ml-32"></i>
+                    <span class="hidden lg:inline">Inicio</span>
+                </a>
+
+                <a href="RegistrarFloraFauna.html"
+                    class="publish-btn text-white text-2xl mb-2 lg:mb-6 flex items-center">
+                    <i class="fas fa-plus-circle mr-2 lg:mr-4"></i>
+                    <span class="hidden lg:inline">Publicar</span>
+                </a>
+
+                <a href="Perfil.html" class="text-white text-2xl mb-2 lg:mb-56 flex items-center">
+                    <i class="fas fa-user mr-2 lg:mr-4"></i>
+                    <span class="hidden lg:inline">Perfil</span>
+                </a>
+
+                <ul class="flex flex-row items-center">
+                    <li
+                        class="text-2xl cursor-pointer items-center justify-center relative group z-2 text-white mr-2 mb-3">
+                        <i class="fas fa-bars"></i>
+                        <ul class="hidden absolute bg-gray-700 py-2 px-4 space-y-2 text-white group-hover:block">
+                            <li class=""><a class="style-a text-white hover:bg-black text-2xl"
+                                    href="Ayuda.html">Ayuda</a>
+                            </li>
+                            <li class=""><a class="style-a text-white hover:bg-black text-2xl" href="">Salir</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="text-white mb-3 text-2xl hidden lg:inline">Mas</li>
+                </ul>
+            </nav>
+        </div>
+     </div>
+
+        <!--Informacion para el admin-->
+        <section class="ml-96 pt-4">
+            <p class="text-4xl font-semibold">CRUD de administrador</p>
+            <br><br><br>
+            <div class="">
+                <form class="grid grid-cols-4">
+                    <div>
+                        <label for="comun_n">Nombre comun</label><br>
+                    <input class="border rounded-full" type="text" id="comun_n" name="comun_n">
+                    </div>
+                    
+                    <div>
+                        <label for="cientifico_n">Nombre cientifico</label><br>
+                        <input class="border rounded-full" type="text" id="cientifico_n" name="cientifico_n">
+                    </div>
+                    
+                    <div>
+                        <label for="cod_f">Codigo</label><br>
+                        <input class="border rounded-full" type="text" name="cod_f" id="cod_f">
+                    </div>
+                    
+                    <div>
+                        <label for="lugar">Lugar del avistamiento</label><br>
+                        <input class="border rounded-full" type="text" name="lugar" id="lugar">
+                    </div>
+                    
+                    <div>
+                        <label for="foto">URL de la foto</label><br>
+                        <input class="border rounded-full" type="text" name="foto" id="foto">
+                    </div>
+                    
+                    <div>
+                        <label for="biologo_c">Cedula del Biologo</label><br>
+                        <input class="border rounded-full" type="text" name="biologo_c" id="biologo_c">
+                    </div>
+                    
+                    <div>
+                        <label for="admin_c">Cedula administrador</label><br>
+                        <input class="border rounded-full" type="text" name="admin_c" id="admin_c">
+                    </div>
+                    
+                    <div>
+                        <label for="usuario_c">Codigo del usuario</label><br>
+                        <input class="border rounded-full" type="text" name="usuario_c" id="usuario_c">
+                    </div>
+                    
+                    <div>
+                        <label for="fecha_primer">Fecha del primer avistamiento</label><br>
+                        <input class="border rounded-full" type="date" name="fecha_primer" id="fecha_primer">
+                    </div>
+                    
+                    <div>
+                        <label for="lugar">Lugar del avistamiento</label><br>
+                        <input class="border rounded-full" type="text" name="lugar" id="lugar">
+                    </div> 
+                </form>
+                <br>
+                <div>
+                    <div class="text-white font-semibold">
+                        <button  class="w-52 h-10 mr-4 border rounded-full bg-[#66245B]">Buscar</button>
+                        <button  class="w-52 h-10 border rounded-full bg-[#66245B]">Actualizar</button>
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+                <br><br>
+                
+            </div>
+            <table class="border">
+                <tr class="border">
+                    <th class="border px-4">Accion</th>
+                    <th class="border px-4">Codigo</th>
+                    <th class="border px-4">Nombre comun</th>
+                    <th class="border px-4">Nombre cientifico</th>
+                    <th class="border px-4">Ced Biologo</th>
+                    <th class="border px-4">Nombre Biologo</th>
+                    <th class="border px-4">Cod Usuario</th>
+                    <th class="border px-4">Ced Estudiante</th>
+                    <th class="border px-4">Nombre Estudiante</th>
+                    <th class="border px-4">Lugar de avistamiento</th>
+                </tr>
+                <tr>
+                    <td class="font-semibold">
+                        <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
+                        <br>
+                        <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
+                    </td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                </tr>
+                <tr>
+                    <td class="font-semibold">
+                        <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
+                        <br>
+                        <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
+                    </td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                </tr>
+                <tr>
+                    <td class="font-semibold">
+                        <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
+                        <br>
+                        <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
+                    </td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                </tr>
+                <tr class="">
+                    <td class="font-semibold">
+                        <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
+                        <br>
+                        <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
+                    </td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                    <td class="border"></td>
+                </tr>
+              </table>
+              <br><br><br><br><br>
+             
+        </section>
+
+        <!--Footer-->
+    <footer class="bg-[#444444] text-white text-sm py-8 z-20 relative">
+        <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 place-items-center">
+            <!--Logo-->
+            <div class="col-start-2 col-end-2 col-span-3 md:col-span-2 lg:col-span-3">
+                <img src="img/LogoUtp.png" alt="LOGO UTP" class="size-24 mb-6">
+            </div>
+            <!--Contact-->
+            <div class="col-start-2 col-end-2 col-span-3 text-center mb-6 md:col-span-2  lg:col-span-3">
+                <strong>Contacto</strong><br>
+                Avenida Universidad Tecnológica de Panamá, Vía Puente Centenario, Campus Metropolitano Dr.
+                Victor
+                Levi
+                Sasso, Edificio No. 3, tercer piso. <br>
+                Teléfono: (507)560-3650 <br>
+            </div>
+            <!--Social-->
+            <div class="col-start-2 col-end-2 col-span-3 md:col-span-2 place-items-center  lg:col-span-3">
+                <a href="https://twitter.com/utpfisc?lang=es" class="fab fa-x-twitter fa-lg text-white text-2xl"></a>
+                <a href="https://pa.linkedin.com/company/utpfisc?trk=public_post_follow-view-profile"
+                    class="fab fa-linkedin fa-lg text-white text-2xl"></a>
+                <a href="https://www.youtube.com/@utpfisc2203" class="fab fa-youtube fa-lg text-white text-2xl"></a>
+                <a href="https://www.instagram.com/utpfisc/?hl=es"
+                    class="fab fa-instagram fa-lg text-white text-2xl"></a>
+                <a href="https://www.facebook.com/utpfisc/?locale=es_LA"
+                    class="fab fa-facebook fa-lg text-white text-2xl"></a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <p>© 2023 - Universidad Tecnológica de Panamá</p>
+        </div>
+    </footer>
+</body>
+</html>
