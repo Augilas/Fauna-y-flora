@@ -12,7 +12,7 @@
 </head>
 <body>
      <!-- Barra de Navegación -->
-     <div class="bg-[#66245B] flex flex-col lg:min-h-screen w-screen lg:w-1/6 fixed z-10">
+     <div class="bg-[#66245B] flex flex-col lg:w-[30%] lg:min-h-screen md:w-screen sm:w-screen fixed z-10">
         <div class="flex flex-col items-center lg:flex-row lg:items-center md:mr-4 lg:ml-6 lg:mb-16 sm:mb-8">
             <img src="img/utp-logo-blco.png" alt="LOGO UTP" class="size-20 mr-2 mt-6 mb-2">
             <h1 class="text-4xl text-white lg:mt-6 font-semibold hidden md:block sm:block">UTP</h1>
@@ -55,11 +55,11 @@
      </div>
 
         <!--Informacion para el admin-->
-        <section class="ml-96 pt-4">
+        <section class="lg:ml-64 lg:pt-10 md:px-6 md:pt-64 sm:px-6 sm:pt-64">
             <p class="text-4xl font-semibold">CRUD de administrador</p>
             <br><br><br>
             <div class="">
-                <form class="grid grid-cols-4">
+                <form class="grid grid-cols-4 md:grid-row-4 md:grid-cols-2 sm:grid-row-4 sm:grid-cols-2">
                     <div>
                         <label for="fauna_o_flora">Buscar fauna o flora</label><br>
                         <select name="tipo" id="tipo"
@@ -122,17 +122,17 @@
                     </div> 
                 </form>
                 <br>
-                <div class="flex">
-                    <div class="text-white font-semibold">
+                <div class="flex md:flex-col sm:flex-col">
+                    <div class="text-white font-semibold md:flex">
                         <button  class="w-52 h-10 mr-4 border rounded-full bg-[#66245B]">Buscar</button>
                         <button  class="w-52 h-10 border rounded-full bg-[#66245B]">Actualizar</button>
                     </div>
 
-                    <div class="flex mb-8">
-                        <label for="selec_tablas" class="text-lg font-semibold w-96 lg:ml-7 md:ml-4">Seleccione la tabla que desea ver:</label>
+                    <div class="flex md:flex-col md:py-4 sm:flex-col sm:mb-4">
+                        <label for="selec_tablas" class="text-lg font-semibold w-96 lg:ml-7 md:ml-4 sm:pt-4">Seleccione la tabla que desea ver:</label>
                         <select name="tipo" id="tipo"
-                            class="lg:ml-12 md:ml-24 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
-                            <option value="" disabled selected style="display:none">Selecciona una opción
+                            class="lg:ml-12 md:ml-4 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
+                            <option value="" disabled selected style="display:none">Seleccionar tabla
                             </option>
                             <option value="sendero" class="bg-[#66245B] text-white">Usuario</option>
                             <option value="aljibe" class="bg-[#66245B] text-white">Estudiante</option>
@@ -151,84 +151,87 @@
                 <br><br>
                 
             </div>
-            <table class="border">
-                <tr class="border">
-                    <th class="border px-4">Accion</th>
-                    <th class="border px-4">Codigo</th>
-                    <th class="border px-4">Nombre comun</th>
-                    <th class="border px-4">Nombre cientifico</th>
-                    <th class="border px-4">Ced Biologo</th>
-                    <th class="border px-4">Nombre Biologo</th>
-                    <th class="border px-4">Cod Usuario</th>
-                    <th class="border px-4">Ced Estudiante</th>
-                    <th class="border px-4">Nombre Estudiante</th>
-                    <th class="border px-4">Lugar de avistamiento</th>
-                </tr>
-                <tr>
-                    <td class="font-semibold">
-                        <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
-                        <br>
-                        <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
-                    </td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                </tr>
-                <tr>
-                    <td class="font-semibold">
-                        <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
-                        <br>
-                        <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
-                    </td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                </tr>
-                <tr>
-                    <td class="font-semibold">
-                        <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
-                        <br>
-                        <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
-                    </td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                </tr>
-                <tr class="">
-                    <td class="font-semibold">
-                        <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
-                        <br>
-                        <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
-                    </td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                    <td class="border"></td>
-                </tr>
-              </table>
+            <div class="md:overflow-x-auto sm:overflow-x-auto">
+                <table class="border md:min-w-full sm:min-w-full">
+                    <tr class="border">
+                        <th class="border px-4">Accion</th>
+                        <th class="border px-4">Codigo</th>
+                        <th class="border px-4">Nombre comun</th>
+                        <th class="border px-4">Nombre cientifico</th>
+                        <th class="border px-4">Ced Biologo</th>
+                        <th class="border px-4">Nombre Biologo</th>
+                        <th class="border px-4">Cod Usuario</th>
+                        <th class="border px-4">Ced Estudiante</th>
+                        <th class="border px-4">Nombre Estudiante</th>
+                        <th class="border px-4">Lugar de avistamiento</th>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold">
+                            <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
+                            <br>
+                            <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
+                        </td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold">
+                            <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
+                            <br>
+                            <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
+                        </td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold">
+                            <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
+                            <br>
+                            <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
+                        </td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                    </tr>
+                    <tr class="">
+                        <td class="font-semibold">
+                            <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
+                            <br>
+                            <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
+                        </td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                    </tr>
+                  </table>
+            </div>
+            
               <br><br><br><br><br>
              
         </section>
