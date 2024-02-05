@@ -12,7 +12,7 @@
 </head>
 <body>
      <!-- Barra de Navegación -->
-     <div class="bg-[#66245B] flex flex-col lg:w-[30%] lg:min-h-screen md:w-screen sm:w-screen fixed z-10">
+     <div class="bg-[#66245B] flex flex-col min-[1920px]:w-[15%] min-[1024px]:w-[30%] lg:min-h-screen md:w-screen sm:w-screen fixed z-10">
         <div class="flex flex-col items-center lg:flex-row lg:items-center md:mr-4 lg:ml-6 lg:mb-16 sm:mb-8">
             <img src="img/utp-logo-blco.png" alt="LOGO UTP" class="size-20 mr-2 mt-6 mb-2">
             <h1 class="text-4xl text-white lg:mt-6 font-semibold hidden md:block sm:block">UTP</h1>
@@ -59,7 +59,7 @@
             <p class="text-4xl font-semibold">CRUD de administrador</p>
             <br><br><br>
             <div class="">
-                <form class="grid grid-cols-4 md:grid-row-4 md:grid-cols-2 sm:grid-row-4 sm:grid-cols-2">
+                <form class="grid min-[1920px]:grid-cols-4 md:grid-row-4 md:grid-cols-2 sm:grid-row-4 sm:grid-cols-2">
                     <div>
                         <label for="fauna_o_flora">Buscar fauna o flora</label><br>
                         <select name="tipo" id="tipo"
@@ -123,12 +123,7 @@
                 </form>
                 <br>
                 <div class="flex md:flex-col sm:flex-col">
-                    <div class="text-white font-semibold md:flex">
-                        <button  class="w-52 h-10 mr-4 border rounded-full bg-[#66245B]">Buscar</button>
-                        <button  class="w-52 h-10 border rounded-full bg-[#66245B]">Actualizar</button>
-                    </div>
-
-                    <div class="flex md:flex-col md:py-4 sm:flex-col sm:mb-4">
+                    <div class="flex min-[1920px]:flex-row md:flex-col md:py-4 sm:flex-col sm:mb-4">
                         <label for="selec_tablas" class="text-lg font-semibold w-96 lg:ml-7 md:ml-4 sm:pt-4">Seleccione la tabla que desea ver:</label>
                         <select name="tipo" id="tipo"
                             class="lg:ml-12 md:ml-4 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
@@ -147,6 +142,13 @@
                             
                         </select>
                     </div>
+
+                    <div class="text-white font-semibold md:flex">
+                        <button  class="w-52 h-10 mr-4 border rounded-full bg-[#66245B]">Buscar</button>
+                        <button  class="w-52 h-10 border rounded-full bg-[#66245B]">Actualizar</button>
+                    </div>
+
+                    
                 </div>
                 <br><br>
                 
