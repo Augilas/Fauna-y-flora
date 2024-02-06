@@ -10,9 +10,9 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="m-0 font-['Roboto']">
+<body>
     
-    <div class="grid.grid-rows-2 flex max-[768px]:h-[1000px]">
+    <div class="flex">
         <!--Barra de navegacion-->
         <div class="bg-[#66245B] flex flex-col lg:min-h-screen w-screen lg:w-1/6 fixed z-10">
             <div class="flex flex-col items-center lg:flex-row lg:items-center md:mr-4 lg:ml-6 lg:mb-16 sm:mb-8">
@@ -23,8 +23,8 @@
             <div class="flex lg:flex-col md:flex-row">
                 <nav class="flex lg:flex-col md:flex-row lg:ml-8 md:ml-56 lg:ml-6 lg:space-x-0 space-x-2">
                     <a href=" Home.html" class="text-white text-2xl mb-2 lg:mb-6 flex items-center">
-                        <i class="fas fa-home mr-2 lg:mr-4 lg:ml-0 md:ml-20 ml-32"></i>
-                        <span class="hidden lg:inline">Inicio</span>
+                    <i class="fas fa-home mr-2 lg:mr-4 lg:ml-0 md:ml-20 ml-32"></i>
+                    <span class="hidden lg:inline">Inicio</span>
                     </a>
 
                     <a href="RegistrarFloraFauna.html"
@@ -56,22 +56,22 @@
             </div>
         </div>
         
-        <!--informacion del perfil-->
-        <div class="w-full">
-            <p class="text-4xl pt-6 ml-96">Perfil</p>
-            <section class="ml-96">
-                <div class="border rounded-lg shadow-lg w-[95%] mt-4">
-                    <br><br> 
-                    <div class="flex">
-                        <img src="img/perfil-gris.webp" alt="IMG-PERFIL" class="w-52 rounded-full ml-40">
-                        <div class="self-center font-semibold text-lg pl-[25rem]">
+        <!--Informacion del perfil-->
+        <section class="lg:w-full lg:h-full lg:pb-0 lg:pl-64 lg:pt-10 sm:w-full sm:pt-64 sm:px-4">
+            <p class="min-[1920px]:pl-20 lg:text-4xl sm:text-2xl">Perfil</p>
+            <div class="ml-96 sm:mx-4 sm:flex sm:justify-center sm:mb-10">
+                <div class="border rounded-lg shadow-lg w-[95%] mt-4 lg:p-10 sm:p-4">
+                    <div class="min-[1920px]: sm:flex sm:items-center sm:flex-col ">
+                        <img src="img/perfil-gris.webp" alt="IMG-PERFIL" class="w-52 rounded-full">
+                        
+                        <div class="font-semibold text-lg lg:pl-64 min-[1024px]:pl-0 md:self-start">
                             <p class="">FECHA DEL SERVIDOR:</p>
                             <br>
                             <p class="">HORA DEL SERVIDOR:</p>
                         </div>
                     </div>
-                 
-                    <div class="font-semibold text-lg pt-10 pl-28">
+                    <br><br>
+                    <div class="font-semibold lg:text-lg">
                         <p>NOMBRE(S):</p>
                             <br><br>
                         <p>APELLIDO(S):</p>
@@ -81,16 +81,18 @@
                         <p>CORREO ELECTRONICO:</p>
                             <br><br>
                         <p>TELEFONO:</p>
-                            <br><br>
                     </div>
-                        <button class="bg-[#66245b] text-white border border-black rounded-full p-2 right-[10rem] top-[42rem] absolute">
+                    <a href="">
+                        <button class="bg-[#66245b] text-white border border-black rounded-full p-1 min-[1920px]:right-[5rem] min-[1920px]:top-[52rem] min-[1024px]:top-[52rem] min-[1024px]:right-[4rem] sm:text-sm sm:top-[59rem] sm:right-[4rem] absolute">
                             Editar Perfil
                         </button>
+                    </a>
                 </div> 
-            </section>
-        </div>
-    </div>             
-    <br><br><br>
+            </div>
+            <br><br>
+        </section>
+    </div>  
+
     <footer class="bg-[#444444] text-white text-sm py-8 z-20 relative">
         <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 place-items-center">
             <!--Logo-->
