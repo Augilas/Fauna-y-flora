@@ -98,60 +98,8 @@
                     </div>
 
                     <div>
-                        <label for="lugar" class="ml-16">Lugar del avistamiento</label><br>
-                        <select name="lugar" id="lugar"
-                                    class="md:ml-16 md:mt-4 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
-                                    <option value="" disabled selected style="display:none">Selecciona una opción
-                                    </option>
-                                    <option value="sendero" class="bg-[#66245B] text-white">Sendero Ecológico UTP
-                                    </option>
-                                    <option value="aljibe" class="bg-[#66245B] text-white">Aljibe</option>
-                                    <option value="parque pitagora" class="bg-[#66245B] text-white">Parque Pitágoras UTP
-                                    </option>
-                                    <option value="chato park" class="bg-[#66245B] text-white">Chato Park</option>
-                                    <option value="cancha fut" class="bg-[#66245B] text-white">Cancha de Fútbol UTP
-                                    </option>
-                                    <option value="cancha baloncesto" class="bg-[#66245B] text-white">Cancha de
-                                        Baloncesto UTP</option>
-                                    <option value="escalera" class="bg-[#66245B] text-white">Escaleras Doce Casas UTP
-                                    </option>
-                                    <option value="edificio1" class="bg-[#66245B] text-white">Edificio 1</option>
-                                    <option value="edificio2" class="bg-[#66245B] text-white">Edificio 2</option>
-                                    <option value="edificio3" class="bg-[#66245B] text-white">Edificio 3</option>
-                                    <option value="edificio4" class="bg-[#66245B] text-white">Edificio 4</option>
-                                    <option value="edicio de labs" class="bg-[#66245B] text-white">Edificio de
-                                        Laboratorio Docentes</option>
-                                </select>
-                    </div>
-
-                    <div>
-                        <label for="foto">URL de la foto</label><br>
-                        <input class="border rounded-full" type="text" name="foto" id="foto">
-                    </div>
-
-                    <div>
-                        <label for="biologo_c">Cedula del Biologo</label><br>
-                        <input class="border rounded-full" type="text" name="biologo_c" id="biologo_c">
-                    </div>
-
-                    <div>
-                        <label for="admin_c">Cedula administrador</label><br>
-                        <input class="border rounded-full" type="text" name="admin_c" id="admin_c">
-                    </div>
-
-                    <div>
-                        <label for="usuario_c">Codigo del usuario</label><br>
-                        <input class="border rounded-full" type="text" name="usuario_c" id="usuario_c">
-                    </div>
-
-                    <div>
                         <label for="fecha_primer">Fecha del primer avistamiento</label><br>
                         <input class="border rounded-full" type="date" name="fecha_primer" id="fecha_primer">
-                    </div>
-
-                    <div>
-                        <label for="lugar">Lugar del avistamiento</label><br>
-                        <input class="border rounded-full" type="text" name="lugar" id="lugar">
                     </div>
                 </form>
                 <br>
@@ -166,16 +114,8 @@
                             class="ml-24 lg:ml-12 md:ml-28 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
                             <option value="" disabled selected style="display:none">Seleccionar tabla
                             </option>
-                            <option value="sendero" class="bg-[#66245B] text-white">Usuario</option>
-                            <option value="aljibe" class="bg-[#66245B] text-white">Estudiante</option>
-                            <option value="aljibe" class="bg-[#66245B] text-white">Biologo</option>
-                            <option value="aljibe" class="bg-[#66245B] text-white">Biologo_fauna</option>
                             <option value="aljibe" class="bg-[#66245B] text-white">Fauna</option>
-                            <option value="aljibe" class="bg-[#66245B] text-white">Comentarios_fauna</option>
                             <option value="aljibe" class="bg-[#66245B] text-white">Flora</option>
-                            <option value="aljibe" class="bg-[#66245B] text-white">Comentarios_flora</option>
-                            <option value="aljibe" class="bg-[#66245B] text-white">Lugar</option>
-                            <option value="aljibe" class="bg-[#66245B] text-white">Administrador</option>
 
                         </select>
                     </div>
@@ -199,12 +139,9 @@
                         <th class="border px-4">Codigo</th>
                         <th class="border px-4">Nombre comun</th>
                         <th class="border px-4">Nombre cientifico</th>
-                        <th class="border px-4">Ced Biologo</th>
-                        <th class="border px-4">Nombre Biologo</th>
-                        <th class="border px-4">Cod Usuario</th>
-                        <th class="border px-4">Ced Estudiante</th>
-                        <th class="border px-4">Nombre Estudiante</th>
-                        <th class="border px-4">Lugar de avistamiento</th>
+                        <th class="border px-4">Imagen</th>
+                        <th class="border px-4">Visto por primera vez</th>
+                        <th class="border px-4">Descripcion cientifica</th>
                     </tr>
                     <tr>
                         <td class="font-semibold">
@@ -212,24 +149,6 @@
                             <br>
                             <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
                         </td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">
-                            <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
-                            <br>
-                            <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
-                        </td>
-                        <td class="border"></td>
-                        <td class="border"></td>
                         <td class="border"></td>
                         <td class="border"></td>
                         <td class="border"></td>
@@ -246,6 +165,18 @@
                         </td>
                         <td class="border"></td>
                         <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold">
+                            <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
+                            <br>
+                            <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
+                        </td>
                         <td class="border"></td>
                         <td class="border"></td>
                         <td class="border"></td>
@@ -260,8 +191,6 @@
                             <br>
                             <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
                         </td>
-                        <td class="border"></td>
-                        <td class="border"></td>
                         <td class="border"></td>
                         <td class="border"></td>
                         <td class="border"></td>
