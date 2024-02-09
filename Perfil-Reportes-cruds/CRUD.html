@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,57 +11,66 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <section class="lg:grid lg:grid-cols-4 lg:w-full w-full">
-     <!-- Barra de Navegación -->
-     <div class="bg-[#66245B] lg:col-span-1 lg:w-3/4 w-full">
-        <div class="flex flex-col items-center lg:flex-row lg:justify-start lg:ml-6 lg:mb-16 mb-8 items-center justify-center">
-            <img src="img/utp-logo-blco.png" alt="LOGO UTP" class="size-20 mt-6 mb-2">
-            <h1 class="text-4xl text-white lg:mt-6 lg:ml-3 font-semibold hidden md:block sm:block">UTP</h1>
+        <!-- Barra de Navegación -->
+        <div class="bg-[#66245B] flex flex-col lg:min-h-screen min-[1024px]:w-60 lg:w-1/6 w-screen z-10">
+            <div class="flex flex-col items-center lg:flex-row lg:items-center md:mr-4 lg:ml-6 lg:mb-16 sm:mb-8">
+                <img src="/Images/LogoUtp.png" alt="LOGO UTP" class="size-20 mr-2 mt-6 mb-2">
+                <h1 class="text-4xl text-white lg:mt-6 font-semibold hidden md:block sm:block">UTP</h1>
+            </div>
+
+            <div class="flex lg:flex-col md:flex-row">
+                <nav class="flex lg:flex-col md:flex-row lg:ml-8 md:ml-56 lg:ml-6 lg:space-x-0 space-x-2">
+                    <a href=" Home.html" class="text-white text-2xl mb-2 lg:mb-6 flex items-center">
+                        <i class="fas fa-home mr-2 lg:mr-4 lg:ml-0 md:ml-20 ml-32"></i>
+                        <span class="hidden lg:inline">Inicio</span>
+                    </a>
+
+                    <a href="/Perfil-Reportes-cruds/CRUD.html"
+                        class="publish-btn text-white text-2xl mb-2 lg:mb-6 flex items-center">
+                        <i class="fas fa-pencil-alt mr-2 lg:mr-4"></i>
+                        <span class="hidden lg:inline">CRUD</span>
+                    </a>
+
+                    <a href="/Perfil-Reportes-cruds/Reportes.html"
+                        class="publish-btn text-white text-2xl mb-2 lg:mb-6 flex items-center">
+                        <i class="fas fa-file-alt mr-2 lg:mr-4"></i>
+                        <span class="hidden lg:inline">Reportes</span>
+                    </a>
+
+                    <a href="/Perfil-Reportes-cruds/Perfil.html"
+                        class="text-white text-2xl mb-2 lg:mb-56 flex items-center">
+                        <i class="fas fa-user mr-2 lg:mr-4"></i>
+                        <span class="hidden lg:inline">Perfil</span>
+                    </a>
+
+                    <ul class="flex flex-row items-center">
+                        <li
+                            class="text-2xl cursor-pointer items-center justify-center relative group z-2 text-white mr-2 mb-3">
+                            <i class="fas fa-bars"></i>
+                            <ul class="hidden absolute bg-gray-700 py-2 px-4 space-y-2 text-white group-hover:block">
+                                <li class=""><a class="style-a text-white hover:bg-black text-2xl"
+                                        href="Ayuda.html">Ayuda</a>
+                                </li>
+                                <li class=""><a class="style-a text-white hover:bg-black text-2xl" href="">Salir</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="text-white mb-3 text-2xl hidden lg:inline">Mas</li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-
-        <div class="flex lg:flex-col md:flex-row items-center justify-center lg:justify-start lg:items-start">
-            <nav class="flex lg:flex-col md:flex-row lg:ml-8 lg:ml-6 lg:space-x-0 space-x-2">
-                <a href="/Home-Publicar-Ayuda/Home.html" class="text-white text-2xl mb-2 lg:mb-6 flex items-center">
-                <i class="fas fa-home mr-2 lg:mr-4 lg:ml-0 "></i>
-                <span class="hidden lg:inline">Inicio</span>
-                </a>
-
-                <a href="/Home-Publicar-Ayuda/RegistrarFloraFauna.html"
-                    class="publish-btn text-white text-2xl mb-2 lg:mb-6 flex items-center">
-                    <i class="fas fa-plus-circle mr-2 lg:mr-4"></i>
-                    <span class="hidden lg:inline">Publicar</span>
-                </a>
-
-                <a href="Perfil.html" class="text-white text-2xl mb-2 lg:mb-56 flex items-center">
-                    <i class="fas fa-user mr-2 lg:mr-4"></i>
-                    <span class="hidden lg:inline">Perfil</span>
-                </a>
-
-                <ul class="flex flex-row items-center">
-                    <li
-                        class="text-2xl cursor-pointer items-center justify-center relative group z-2 text-white mr-2 mb-3">
-                        <i class="fas fa-bars"></i>
-                        <ul class="hidden absolute bg-gray-700 py-2 px-4 space-y-2 text-white group-hover:block">
-                            <li class=""><a class="style-a text-white hover:bg-black text-2xl"
-                                    href="/Home-Publicar-Ayuda/Ayuda.html">Ayuda</a>
-                            </li>
-                            <li class=""><a class="style-a text-white hover:bg-black text-2xl" href="">Salir</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="text-white mb-3 text-2xl hidden lg:inline">Mas</li>
-                </ul>
-            </nav>
-        </div>
-    </div>
 
         <!--Informacion para el admin-->
         <section class="lg:pt-10 md:px-6 md:pt-15 px-6 pt-12 lg:col-span-3">
             <p class="text-4xl font-semibold text-center md:text-left md:mt-1">CRUD</p>
             <br><br><br>
             <div class="">
-                <form class="grid min-[1920px]:grid-cols-4 gap-6 lg:gap-0 md:grid-row-4 md:grid-cols-2 grid-row-4 grid-cols-2 place-items-center">
+                <form
+                    class="grid min-[1920px]:grid-cols-4 gap-6 lg:gap-0 md:grid-row-4 md:grid-cols-2 grid-row-4 grid-cols-2 place-items-center">
                     <div>
                         <label for="fauna_o_flora">Buscar fauna o flora</label><br>
                         <select name="tipo" id="tipo"
@@ -74,60 +84,62 @@
 
                     <div>
                         <label for="comun_n">Nombre comun</label><br>
-                    <input class="border rounded-full" type="text" id="comun_n" name="comun_n">
+                        <input class="border rounded-full" type="text" id="comun_n" name="comun_n">
                     </div>
-                    
+
                     <div>
                         <label for="cientifico_n">Nombre cientifico</label><br>
                         <input class="border rounded-full" type="text" id="cientifico_n" name="cientifico_n">
                     </div>
-                    
+
                     <div>
                         <label for="cod_f">Codigo</label><br>
                         <input class="border rounded-full" type="text" name="cod_f" id="cod_f">
                     </div>
-                    
+
                     <div>
                         <label for="lugar">Lugar del avistamiento</label><br>
                         <input class="border rounded-full" type="text" name="lugar" id="lugar">
                     </div>
-                    
+
                     <div>
                         <label for="foto">URL de la foto</label><br>
                         <input class="border rounded-full" type="text" name="foto" id="foto">
                     </div>
-                    
+
                     <div>
                         <label for="biologo_c">Cedula del Biologo</label><br>
                         <input class="border rounded-full" type="text" name="biologo_c" id="biologo_c">
                     </div>
-                    
+
                     <div>
                         <label for="admin_c">Cedula administrador</label><br>
                         <input class="border rounded-full" type="text" name="admin_c" id="admin_c">
                     </div>
-                    
+
                     <div>
                         <label for="usuario_c">Codigo del usuario</label><br>
                         <input class="border rounded-full" type="text" name="usuario_c" id="usuario_c">
                     </div>
-                    
+
                     <div>
                         <label for="fecha_primer">Fecha del primer avistamiento</label><br>
                         <input class="border rounded-full" type="date" name="fecha_primer" id="fecha_primer">
                     </div>
-                    
+
                     <div>
                         <label for="lugar">Lugar del avistamiento</label><br>
                         <input class="border rounded-full" type="text" name="lugar" id="lugar">
-                    </div> 
+                    </div>
                 </form>
                 <br>
 
                 <!--Seleccion de tabla a visualizar del crud-->
                 <div class="flex md:flex-col flex-col items-center justify-center text-center">
-                   <!--Here is the gap--> <div class="flex min-[1920px]:flex-row md:flex-col md:py-4 flex-col mb-4 lg:ml-0">
-                        <label for="selec_tablas" class="text-lg font-semibold w-96 md:ml-4 pt-4">Seleccione la tabla que desea ver:</label>
+                    <!--Here is the gap-->
+                    <div class="flex min-[1920px]:flex-row md:flex-col md:py-4 flex-col mb-4 lg:ml-0">
+                        <label for="selec_tablas" class="text-lg font-semibold w-96 md:ml-4 pt-4">Seleccione la tabla
+                            que desea ver:</label>
                         <select name="tipo" id="tipo"
                             class="ml-24 lg:ml-12 md:ml-28 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
                             <option value="" disabled selected style="display:none">Seleccionar tabla
@@ -142,21 +154,21 @@
                             <option value="aljibe" class="bg-[#66245B] text-white">Comentarios_flora</option>
                             <option value="aljibe" class="bg-[#66245B] text-white">Lugar</option>
                             <option value="aljibe" class="bg-[#66245B] text-white">Administrador</option>
-                            
+
                         </select>
                     </div>
 
                     <div class="text-white font-semibold flex">
-                        <button  class="w-32 md:w-48 h-10 mr-4 border rounded-full bg-[#66245B]">Buscar</button>
-                        <button  class="w-32 md:w-48 h-10 border rounded-full bg-[#66245B]">Actualizar</button>
+                        <button class="w-32 md:w-48 h-10 mr-4 border rounded-full bg-[#66245B]">Buscar</button>
+                        <button class="w-32 md:w-48 h-10 border rounded-full bg-[#66245B]">Actualizar</button>
                     </div>
 
-                    
+
                 </div>
                 <!--Fin seleccion de tabla a visualizar del crud-->
 
                 <br><br>
-                
+
             </div>
             <div class="md:overflow-x-auto overflow-x-auto">
                 <table class="border md:min-w-full min-w-full">
@@ -236,16 +248,16 @@
                         <td class="border"></td>
                         <td class="border"></td>
                     </tr>
-                  </table>
+                </table>
             </div>
-            
-              <br><br><br><br><br>
-             
+
+            <br><br><br><br><br>
+
         </section>
     </section>
 
 
-        <!--Footer-->
+    <!--Footer-->
     <footer class="bg-[#444444] text-white text-sm py-8 z-20 relative">
         <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 place-items-center">
             <!--Logo-->
@@ -278,4 +290,5 @@
         </div>
     </footer>
 </body>
+
 </html>

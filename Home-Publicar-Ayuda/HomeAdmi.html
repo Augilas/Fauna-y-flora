@@ -1,39 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Inicio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-    
     <div class="flex">
-        <!--Barra de navegacion-->
-        <div class="bg-[#66245B] flex flex-col lg:min-h-screen min-[1024px]:w-60 lg:w-1/6 w-screen fixed z-10">
+        <!-- Barra de Navegación -->
+        <div class="bg-[#66245B] flex flex-col lg:min-h-screen min-[1024px]:w-60 lg:w-1/6 w-screen z-10">
             <div class="flex flex-col items-center lg:flex-row lg:items-center md:mr-4 lg:ml-6 lg:mb-16 sm:mb-8">
-                <img src="img/utp-logo-blco.png" alt="LOGO UTP" class="size-20 mr-2 mt-6 mb-2">
+                <img src="img/LogoUtp.png" alt="LOGO UTP" class="size-20 mr-2 mt-6 mb-2">
                 <h1 class="text-4xl text-white lg:mt-6 font-semibold hidden md:block sm:block">UTP</h1>
             </div>
 
             <div class="flex lg:flex-col md:flex-row">
                 <nav class="flex lg:flex-col md:flex-row lg:ml-8 md:ml-56 lg:ml-6 lg:space-x-0 space-x-2">
-                    <a href="/Home-Publicar-Ayuda/Home.html" class="text-white text-2xl mb-2 lg:mb-6 flex items-center">
-                    <i class="fas fa-home mr-2 lg:mr-4 lg:ml-0 md:ml-20 ml-32"></i>
-                    <span class="hidden lg:inline">Inicio</span>
+                    <a href=" Home.html" class="text-white text-2xl mb-2 lg:mb-6 flex items-center">
+                        <i class="fas fa-home mr-2 lg:mr-4 lg:ml-0 md:ml-20 ml-32"></i>
+                        <span class="hidden lg:inline">Inicio</span>
                     </a>
 
-                    <a href="/Home-Publicar-Ayuda/RegistrarFloraFauna.html"
+                    <a href="/Perfil-Reportes-cruds/CRUD.html"
                         class="publish-btn text-white text-2xl mb-2 lg:mb-6 flex items-center">
-                        <i class="fas fa-plus-circle mr-2 lg:mr-4"></i>
-                        <span class="hidden lg:inline">Publicar</span>
+                        <i class="fas fa-pencil-alt mr-2 lg:mr-4"></i>
+                        <span class="hidden lg:inline">CRUD</span>
                     </a>
 
-                    <a href="/Perfil-Reportes-cruds/Perfil.html" class="text-white text-2xl mb-2 lg:mb-56 flex items-center">
+                    <a href="/Perfil-Reportes-cruds/Reportes.html"
+                        class="publish-btn text-white text-2xl mb-2 lg:mb-6 flex items-center">
+                        <i class="fas fa-file-alt mr-2 lg:mr-4"></i>
+                        <span class="hidden lg:inline">Reportes</span>
+                    </a>
+
+                    <a href="/Perfil-Reportes-cruds/Perfil.html"
+                        class="text-white text-2xl mb-2 lg:mb-56 flex items-center">
                         <i class="fas fa-user mr-2 lg:mr-4"></i>
                         <span class="hidden lg:inline">Perfil</span>
                     </a>
@@ -44,7 +51,7 @@
                             <i class="fas fa-bars"></i>
                             <ul class="hidden absolute bg-gray-700 py-2 px-4 space-y-2 text-white group-hover:block">
                                 <li class=""><a class="style-a text-white hover:bg-black text-2xl"
-                                        href="/Home-Publicar-Ayuda/Ayuda.html">Ayuda</a>
+                                        href="Ayuda.html">Ayuda</a>
                                 </li>
                                 <li class=""><a class="style-a text-white hover:bg-black text-2xl" href="">Salir</a>
                                 </li>
@@ -55,49 +62,14 @@
                 </nav>
             </div>
         </div>
-        
-        <!--Informacion del perfil-->
-        <section class="lg:w-full lg:h-full lg:pb-0 lg:pl-64 lg:pt-10 sm:w-full sm:pt-64 sm:px-4">
-            <p class="min-[1920px]:pl-20 lg:text-4xl sm:text-2xl">Perfil</p>
-            <div class="lg:mt-4 sm:mx-4 sm:flex sm:justify-center sm:mb-10 ml-16 md:mt-0 mt-44 w-full md:ml-0">
-                <div class="border rounded-lg shadow-lg w-[95%] mt-4 lg:p-10 sm:p-4">
-                    <div class="items-center flex-col flex lg:flex-row md:flex-row">
-                        <img src="img/perfil-gris.webp" alt="IMG-PERFIL" class="w-52 rounded-full lg:mt-0 md:mt-0 lg:ml-14 md:ml-14 mt-4 ml-6 lg:mr-48 md:mr-24">
-                        
-                        <div class="font-semibold text-lg lg:pl-64 min-[1024px]:pl-0 md:self-start sm:self-start mt-8 lg:ml-10 md:ml-0 ml-4 lg:mt-16 md:mt-16">
-                            <p class="">FECHA DEL SERVIDOR:</p>
-                            <br>
-                            <p class="">HORA DEL SERVIDOR:</p>
-                        </div>
-                    </div>
-                    <br><br>
-                    <div class="font-semibold lg:text-lg lg:ml-0 md:ml-0 ml-4 lg:mt-5 md:mt-2">
-                        <p>NOMBRE(S):</p>
-                            <br><br>
-                        <p>APELLIDO(S):</p>
-                            <br><br>
-                        <p>CÉDULA:</p>
-                            <br><br>
-                        <p>CORREO ELECTRONICO:</p>
-                            <br><br>
-                        <p>TELEFONO:</p>
-                    </div>
-                    <a href="" class="flex flex-row-reverse">
-                        <button class="bg-[#66245b] text-white font-semibold border border-black rounded-full p-2 lg:mt-10 md:mt-0 mt-10 lg:mb-0 md:mb-0 mb-4 lg:mr-0 md:mr-0 mr-20 ">
-                            Editar Perfil
-                        </button>
-                    </a>
-                </div> 
-            </div>
-            <br><br>
-        </section>
-    </div>  
+
+    </div>
 
     <footer class="bg-[#444444] text-white text-sm py-8 z-20 relative">
         <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 place-items-center">
             <!--Logo-->
             <div class="col-start-2 col-end-2 col-span-3 md:col-span-2 lg:col-span-3">
-                <img src="img/utp-logo-blco.png" alt="LOGO UTP" class="size-24 mb-6">
+                <img src="img/LogoUtp.png" alt="LOGO UTP" class="size-24 mb-6">
             </div>
             <!--Contact-->
             <div class="col-start-2 col-end-2 col-span-3 text-center mb-6 md:col-span-2  lg:col-span-3">
@@ -125,4 +97,5 @@
         </div>
     </footer>
 </body>
+
 </html>
