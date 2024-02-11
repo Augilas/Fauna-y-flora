@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD</title>
+    <title>CRUD - Estudiante</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -71,35 +71,31 @@
             <div class="">
                 <form
                     class="grid min-[1920px]:grid-cols-4 gap-6 lg:gap-0 md:grid-row-4 md:grid-cols-2 grid-row-4 grid-cols-2 place-items-center">
-                    <div>
-                        <label for="fauna_o_flora">Buscar fauna o flora</label><br>
-                        <select name="tipo" id="tipo"
-                            class=" w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
-                            <option value="" disabled selected style="display:none">Selecciona una opción
-                            </option>
-                            <option value="sendero" class="bg-[#66245B] text-white">Fauna</option>
-                            <option value="sendero" class="bg-[#66245B] text-white">Flora</option>
-                        </select>
-                    </div>
 
                     <div>
-                        <label for="comun_n">Nombre comun</label><br>
+                        <label for="comun_n">Nombre</label><br>
                         <input class="border rounded-full" type="text" id="comun_n" name="comun_n">
                     </div>
 
                     <div>
-                        <label for="cientifico_n">Nombre cientifico</label><br>
+                        <label for="cientifico_n">Apellido</label><br>
                         <input class="border rounded-full" type="text" id="cientifico_n" name="cientifico_n">
                     </div>
 
                     <div>
-                        <label for="cod_f">Codigo</label><br>
+                        <label for="cod_f">Cedula</label><br>
                         <input class="border rounded-full" type="text" name="cod_f" id="cod_f">
                     </div>
 
+                    
                     <div>
-                        <label for="fecha_primer">Fecha del primer avistamiento</label><br>
-                        <input class="border rounded-full" type="date" name="fecha_primer" id="fecha_primer">
+                        <label for="foto">Correo</label><br>
+                        <input class="border rounded-full" type="text" name="foto" id="foto">
+                    </div>
+
+                    <div>
+                        <label for="biologo_c">Telefono</label><br>
+                        <input class="border rounded-full" type="text" name="biologo_c" id="biologo_c">
                     </div>
                 </form>
                 <br>
@@ -110,12 +106,19 @@
                     <div class="flex min-[1920px]:flex-row md:flex-col md:py-4 flex-col mb-4 lg:ml-0">
                         <label for="selec_tablas" class="text-lg font-semibold w-96 md:ml-4 pt-4">Seleccione la tabla
                             que desea ver:</label>
-                        <select name="tipo" id="tipo"
+                        <select name="tipo" onchange="location = this.value;" id="tipo"
                             class="ml-24 lg:ml-12 md:ml-28 w-2/4 border-2 rounded-2xl border-[#DBDBDB] text-gray-700  p-0.5">
                             <option value="" disabled selected style="display:none">Seleccionar tabla
                             </option>
-                            <option value="aljibe" class="bg-[#66245B] text-white">Fauna</option>
-                            <option value="aljibe" class="bg-[#66245B] text-white">Flora</option>
+                            <option value="CRUD_Usuario.html" class="bg-[#66245B] text-white">Usuario</option>
+                            <option value="CRUD_Estudiante.html" class="bg-[#66245B] text-white">Estudiante</option>
+                            <option value="CRUD_user_Biologo.html" class="bg-[#66245B] text-white">Biologo</option>
+                            <option value="CRUD_Fauna.html" class="bg-[#66245B] text-white">Fauna</option>
+                            <option value="CRUD_Comentarios_fauna.html" class="bg-[#66245B] text-white">Comentarios_fauna</option>
+                            <option value="CRUD_Flora.html" class="bg-[#66245B] text-white">Flora</option>
+                            <option value="CRUD_Comentarios_flora.html" class="bg-[#66245B] text-white">Comentarios_flora</option>
+                            <option value="CRUD_Lugar.html" class="bg-[#66245B] text-white">Lugar</option>
+                            <option value="CRUD_Administrador.html" class="bg-[#66245B] text-white">Administrador</option>
 
                         </select>
                     </div>
@@ -136,12 +139,12 @@
                 <table class="border md:min-w-full min-w-full">
                     <tr class="border">
                         <th class="border px-4">Accion</th>
-                        <th class="border px-4">Codigo</th>
-                        <th class="border px-4">Nombre comun</th>
-                        <th class="border px-4">Nombre cientifico</th>
-                        <th class="border px-4">Imagen</th>
-                        <th class="border px-4">Visto por primera vez</th>
-                        <th class="border px-4">Descripcion cientifica</th>
+                        <th class="border px-4">Cedula</th>
+                        <th class="border px-4">Nombre</th>
+                        <th class="border px-4">Apellido</th>
+                        <th class="border px-4">Telefono</th>
+                        <th class="border px-4">Correo</th>
+                        <th class="border px-4">Tipo de usuario</th>
                     </tr>
                     <tr>
                         <td class="font-semibold">
@@ -149,21 +152,6 @@
                             <br>
                             <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
                         </td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                        <td class="border"></td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">
-                            <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
-                            <br>
-                            <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
-                        </td>
-                        <td class="border"></td>
                         <td class="border"></td>
                         <td class="border"></td>
                         <td class="border"></td>
@@ -178,6 +166,18 @@
                             <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
                         </td>
                         <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold">
+                            <button class="border rounded-full bg-[#dfe7a3] w-20 h-8">Eliminar</button>
+                            <br>
+                            <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
+                        </td>
                         <td class="border"></td>
                         <td class="border"></td>
                         <td class="border"></td>
@@ -191,7 +191,6 @@
                             <br>
                             <button class="border rounded-full text-white bg-[#6ea1a3] w-20 h-8">Actualizar</button>
                         </td>
-                        <td class="border"></td>
                         <td class="border"></td>
                         <td class="border"></td>
                         <td class="border"></td>
