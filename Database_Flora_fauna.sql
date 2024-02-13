@@ -1,4 +1,4 @@
-create database flora_fauna_utp
+﻿create database flora_fauna_utp
 use flora_fauna_utp
 
 
@@ -201,7 +201,8 @@ Correo_admin varchar(50)
 constraint Correo_admin_CK
 check (Correo_admin like '%@utp.ac.pa'),
 
-cod_tipo int constraint Administrador_cod_tipo_fk foreign key (cod_tipo)
+cod_tipo int constraint 
+foreign key (cod_tipo)
 references Tipo_usuario (cod_tipo)
 )
 
@@ -215,7 +216,7 @@ create table Token (
 
 --Procesos------------------------------------------------------
 
---Creaci�n de secuencias
+--Creación de secuencias
 create sequence no_animal
 	start with 1000
 	increment by 1
@@ -252,7 +253,7 @@ BEGIN
     END
     ELSE
     BEGIN
-        PRINT 'Este animal ya se encuentra en nuestros registros. �Deseas escribir alg�n comentario?';
+        PRINT 'Este animal ya se encuentra en nuestros registros. ¿Deseas escribir algún comentario?';
     END
 END;
 
@@ -284,7 +285,7 @@ BEGIN
     END
     ELSE
     BEGIN
-        PRINT 'Esta planta ya se encuentra en nuestros registros. �Deseas escribir alg�n comentario?';
+        PRINT 'Esta planta ya se encuentra en nuestros registros. ¿Deseas escribir algún comentario?';
     END
 END;
 
@@ -385,7 +386,7 @@ BEGIN
                 JOIN Estudiante e ON u.Cedula_estudiante = e.Cedula_estudiante
                 WHERE e.Correo_estudiante = @correo
             )
-                SET @encontrado = 1 -- Se encontr� el correo en la tabla Usuario
+                SET @encontrado = 1 -- Se encontró el correo en la tabla Usuario
         END
 END
 
@@ -434,12 +435,70 @@ end
 
 GRANT EXECUTE ON dbo.CambioContrasena TO FloraFauna;
 
+CREATE PROCEDURE ObtenerCodigoConMasComentarios
+    @mes INT,
+    @año INT,
+	@nombre varchar(40) OUTPUT
+AS
+BEGIN
+	declare @Cod_animal varchar(6), @Cod_flora varchar(6)
+	declare @Cantidad_animal INT = 0, @Cantidad_flora INT = 0
+    SET NOCOUNT ON;
+
+    -- Para Comentarios_fauna
+    SELECT TOP 1
+        @Cod_animal = Cod_animal_comentarios,
+        @Cantidad_animal = COUNT(*)
+    FROM 
+        Comentarios_fauna
+    WHERE
+        MONTH(Fecha_comentario_fauna) = @mes
+        AND YEAR(Fecha_comentario_fauna) = @año
+    GROUP BY 
+        Cod_animal_comentarios
+    ORDER BY 
+        COUNT(*) DESC;
+
+    -- Para Comentarios_flora
+    SELECT TOP 1
+        @Cod_flora = Cod_flora_comentarios,
+        @Cantidad_flora = COUNT(*)
+    FROM 
+        Comentarios_flora
+    WHERE
+        MONTH(Fecha_comentario_flora) = @mes
+        AND YEAR(Fecha_comentario_flora) = @año
+    GROUP BY 
+        Cod_flora_comentarios
+    ORDER BY 
+        COUNT(*) DESC;
+
+	if (@Cantidad_animal > @Cantidad_flora) 
+		select @nombre = Nombre_comun_animal from Fauna where Cod_animal = @Cod_animal
+	else if (@Cantidad_flora > @Cantidad_animal)
+		select @nombre = Nombre_comun_flora from Flora where Cod_flora = @Cod_flora
+	else 
+		set @nombre = 'No Existe Registro'
+
+END
+
+GRANT EXECUTE ON dbo.ObtenerCodigoConMasComentarios TO FloraFauna;
+
+alter table Fauna
+add Descripcion_cientifica_fauna varchar(500)
+
+alter table Flora
+add Descripcion_cientifica_flora varchar(500)
+
+UPDATE Flora
+SET Descripcion_cientifica_flora = 'El agutí centroamericano, también conocido como guaqueque, sereque ​, cotuza, guatín, ñeque, jochi colorado, cherenga, guatusa, sihuayro, carma, picure o añuje es una especie de roedor de la familia Dasyproctidae. '
+WHERE Cod_flora = '2-1000';
 
 --- Tipos de usuarios
 insert into Tipo_usuario
 values (1, 'Usuario'),
 		(2, 'Biologo'),
-		(3, 'Administrador')
+		(4, 'Administrador')
 
 
 insert into Lugar
@@ -456,19 +515,148 @@ values ('sendero'),
 		('edificio4'),
 		('edicio de labs')
 
-insert into Comentarios_flora(Cod_flora_comentarios, Comentario_flora, Cod_usuario)
-values ('2-1000', 'Me gustaa el �equeee', 5)
+--TRIGERS CRUD
 
-SELECT f.Nombre_comun_flora AS NombreAnimal,
-       (SELECT e.Nombre_estudiante + ' ' + e.Apellido_estudiante AS Nombre,
-               cf.Comentario_flora AS Comentario
-        FROM Comentarios_flora cf
-        JOIN Usuario u ON cf.Cod_usuario = u.Cod_usuario
-        JOIN Estudiante e ON e.Cedula_estudiante = u.Cedula_estudiante
-        WHERE cf.Cod_flora_comentarios = f.Cod_flora
-        FOR JSON PATH) AS Comentarios
-FROM Flora f
+--Borrar Animal
+create trigger Borrar_fauna 
+on Fauna
+INSTEAD OF delete
+as
+	begin
+	DECLARE @codigo_animal varchar(6)
 
+	select @codigo_animal = deleted.Cod_animal from deleted
 
+	Delete from Comentarios_fauna where Cod_animal_comentarios = @codigo_animal
+	Delete from Lugar_fauna_estudiante where Cod_animal_lugar_fauna = @codigo_animal
+	Delete from Fauna where Cod_animal = @codigo_animal
+	end
+--Borrar Planta
+create trigger Borrar_flora
+on Flora
+INSTEAD OF delete
+as
+	begin
+	DECLARE @codigo_flora varchar(6)
 
+	select @codigo_flora = deleted.Cod_flora from deleted
 
+	Delete from Comentarios_flora where Cod_flora_comentarios = @codigo_flora
+	Delete from Lugar_flora_estudiante where Cod_flora_Lugar_flora = @codigo_flora
+	Delete from Flora where Cod_flora = @codigo_flora
+	end
+
+--Borrar TipoUsuario
+create trigger Borrar_TipoUsuario
+on Tipo_usuario
+INSTEAD OF delete
+as
+	begin
+	DECLARE @codigo varchar(6)
+
+	select @codigo = deleted.cod_tipo from deleted
+
+	ALTER TABLE [dbo].[Usuario]
+	NOCHECK CONSTRAINT cod_tipo_Usuario_FK
+	ALTER TABLE [dbo].[Estudiante]
+	NOCHECK CONSTRAINT Estudiante_cod_tipo_fk
+	ALTER TABLE [dbo].[Biologo]
+	NOCHECK CONSTRAINT Biologo_cod_tipo_fk
+	ALTER TABLE [dbo].[Administrador]
+	NOCHECK CONSTRAINT Administrador_cod_tipo_fk
+
+	delete From Tipo_usuario where cod_tipo = @codigo and cod_tipo not in(1,2,3)
+
+	ALTER TABLE [dbo].[Usuario]
+	CHECK CONSTRAINT cod_tipo_Usuario_FK
+	ALTER TABLE [dbo].[Estudiante]
+	CHECK CONSTRAINT Estudiante_cod_tipo_fk
+	ALTER TABLE [dbo].[Biologo]
+	CHECK CONSTRAINT Biologo_cod_tipo_fk
+	ALTER TABLE [dbo].[Administrador]
+	CHECK CONSTRAINT Administrador_cod_tipo_fk
+
+	end
+
+--Borrar Usuario
+create trigger Borrar_Usuario
+on Usuario
+INSTEAD OF delete
+as
+	begin
+	DECLARE @codigo varchar(6)
+
+	select @codigo = deleted.Cod_usuario from deleted
+
+	Delete from Comentarios_fauna where Cod_usuario = @codigo
+	Delete from Comentarios_flora where Cod_usuario = @codigo
+	
+	Delete from Usuario where Cod_usuario = @codigo
+
+	end
+
+--Guardar Usuario
+CREATE PROCEDURE InsertarUsuarioNuevo
+    @cod_tipo int,
+    @cedula varchar(14),
+    @usuario varchar(30),
+    @password varchar(80)
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION; 
+        IF EXISTS (SELECT 1 FROM Estudiante WHERE Cedula_estudiante = @cedula)
+			BEGIN
+				INSERT INTO Usuario (Usuario, Contrasena, Cod_tipo, Cedula_estudiante)
+				VALUES (@usuario, @password, @cod_tipo, @cedula);
+
+				COMMIT TRANSACTION; 
+			END
+        ELSE IF EXISTS (SELECT 1 FROM Biologo WHERE Cedula_biologo = @cedula)
+			BEGIN
+				INSERT INTO Usuario (Usuario, Contrasena, Cod_tipo, Cedula_biologo)
+				VALUES (@usuario, @password, @cod_tipo, @cedula);
+
+				COMMIT TRANSACTION; 
+			END
+		ELSE IF EXISTS (SELECT 1 FROM Administrador WHERE Cedula_admin = @cedula)
+			BEGIN
+				INSERT INTO Usuario (Usuario, Contrasena, Cod_tipo, Cedula_admin)
+				VALUES (@usuario, @password, @cod_tipo, @cedula);
+
+				COMMIT TRANSACTION; 
+			END
+		ELSE 
+			BEGIN
+				PRINT 'Error: User not found';
+				COMMIT TRANSACTION; 
+			END
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION; 
+    END CATCH
+END;
+
+GRANT EXECUTE ON OBJECT::InsertarUsuarioNuevo to FloraFauna
+
+--Borrar Lugar
+create trigger Borrar_lugar
+on Lugar
+INSTEAD OF delete
+as
+	begin
+	DECLARE @codigo varchar(6)
+
+	select @codigo = deleted.Cod_lugar from deleted
+	ALTER TABLE [dbo].[Lugar_flora_estudiante]
+	NOCHECK CONSTRAINT Cod_lugar_flora_Lugar_Flora_FK
+	ALTER TABLE [dbo].[Lugar_fauna_estudiante]
+	NOCHECK CONSTRAINT Cod_lugar_fauna_Lugar_Fauna_FK
+
+	delete Lugar where Cod_lugar = @codigo
+
+	ALTER TABLE [dbo].[Lugar_flora_estudiante]
+	CHECK CONSTRAINT Cod_lugar_flora_Lugar_Flora_FK
+	ALTER TABLE [dbo].[Lugar_fauna_estudiante]
+	CHECK CONSTRAINT Cod_lugar_fauna_Lugar_Fauna_FK
+	end
