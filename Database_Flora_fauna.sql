@@ -498,7 +498,7 @@ WHERE Cod_flora = '2-1000';
 insert into Tipo_usuario
 values (1, 'Usuario'),
 		(2, 'Biologo'),
-		(4, 'Administrador')
+		(3, 'Administrador')
 
 
 insert into Lugar
@@ -659,4 +659,68 @@ as
 	CHECK CONSTRAINT Cod_lugar_flora_Lugar_Flora_FK
 	ALTER TABLE [dbo].[Lugar_fauna_estudiante]
 	CHECK CONSTRAINT Cod_lugar_fauna_Lugar_Fauna_FK
+	end
+
+alter table Biologo
+add verificado int
+
+create trigger Borrar_Admin
+on Administrador
+INSTEAD OF delete
+as
+	begin
+	DECLARE @codigo int,
+	@cedula varchar(14)
+
+	select @cedula = deleted.Cedula_admin from deleted
+	select @codigo = Cod_usuario from Usuario where Cedula_admin = @cedula
+
+
+	Delete from Usuario where Cod_usuario = @codigo
+	Delete from Administrador where Cedula_admin = @cedula
+
+	end
+
+create trigger Borrar_Biologo
+on Biologo
+INSTEAD OF delete
+as
+	begin
+	DECLARE @codigo int, @codigoflorafauna varchar(6),
+	@cedula varchar(14)
+
+	select @cedula = deleted.Cedula_biologo from deleted
+	select @codigo = Cod_usuario from Usuario where Cedula_biologo = @cedula
+
+
+	Delete from Usuario where Cod_usuario = @codigo
+	Delete from Biologo where Cedula_biologo = @cedula
+
+	end
+
+create trigger Borrar_Estudiante
+on Estudiante
+INSTEAD OF delete
+as
+	begin
+	DECLARE @codigo int, @codigoflorafauna varchar(6),
+	@cedula varchar(14)
+
+	select @cedula = deleted.Cedula_estudiante from deleted
+	select @codigo = Cod_usuario from Usuario where Cedula_estudiante = @cedula
+
+	Delete from Comentarios_fauna where Cod_usuario = @codigo
+	Delete from Comentarios_flora where Cod_usuario = @codigo
+
+	select @codigoflorafauna = Cod_animal_lugar_fauna from Lugar_fauna_estudiante where Cedula_estudiante_lugar_fauna = @cedula
+	delete Fauna where Cod_animal = @codigoflorafauna
+
+	select @codigoflorafauna = Cod_flora_Lugar_flora from Lugar_flora_estudiante where Cedula_estudiante_lugar_flora = @cedula
+	delete Flora where Cod_flora = @codigoflorafauna
+	
+	delete Lugar_fauna_estudiante where Cedula_estudiante_lugar_fauna = @cedula
+	delete Lugar_flora_estudiante where Cedula_estudiante_lugar_flora = @cedula
+
+	Delete from Usuario where Cod_usuario = @codigo
+	Delete from Estudiante where Cedula_estudiante = @cedula
 	end
