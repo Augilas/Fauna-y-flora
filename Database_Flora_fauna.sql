@@ -201,7 +201,7 @@ Correo_admin varchar(50)
 constraint Correo_admin_CK
 check (Correo_admin like '%@utp.ac.pa'),
 
-cod_tipo int constraint 
+cod_tipo int constraint Cod_tipo_Administrador_FK
 foreign key (cod_tipo)
 references Tipo_usuario (cod_tipo)
 )
@@ -724,3 +724,25 @@ as
 	Delete from Usuario where Cod_usuario = @codigo
 	Delete from Estudiante where Cedula_estudiante = @cedula
 	end
+
+
+
+	insert into Administrador
+	values ('01-0123-004567', 'Nicolas','Tesla','nicolas.tesla@utp.ac.pa', 3)
+
+	insert into Administrador
+	values ('08-0955-001651','Ana','Portugal','ana.portugal@utp.ac.pa',3)
+
+	select * from Administrador
+
+	insert into Usuario (usuario, Contrasena, Cedula_admin, cod_tipo)
+	values ('NicoTes','Utpacpa','01-0123-004567',3)
+
+	insert into Usuario (Usuario, Contrasena, Cedula_admin, cod_tipo)
+	values ('Atport','password','08-0955-001651',3)
+
+
+	select * from Usuario
+
+	alter table Usuario
+	nocheck constraint Usuario_Estudiante_FK
